@@ -90,6 +90,7 @@ public class PaymentPage extends BasePage {
      * @return текущая страница
      */
     public PaymentPage clickToButtonSubmit() {
+        waitUntilVisible(driver, buttonSubmit);
         buttonSubmit.click();
         return this;
     }
@@ -100,6 +101,7 @@ public class PaymentPage extends BasePage {
      * @return текущая страница
      */
     public PaymentPage inputName(String str) {
+        waitUntilVisible(driver, name);
         name.sendKeys(str);
         return this;
     }
@@ -110,6 +112,7 @@ public class PaymentPage extends BasePage {
      * @return текущая страница
      */
     public PaymentPage inputEmail(String str) {
+        waitUntilVisible(driver, email);
         email.sendKeys(str);
         return this;
     }

@@ -120,7 +120,6 @@ public class InterestPage extends BasePage {
      * @return текущая страница
      */
     public String getJsonText() {
-        System.out.println("JSON text: " + textJSONWebElement.getText());
         return textJSONWebElement.getText();
     }
 }
