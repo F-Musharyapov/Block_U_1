@@ -24,11 +24,6 @@ public class PaymentPage extends BasePage {
     }
 
     /**
-     * Константа текста всплывающего окна успеха
-     */
-    public static final String ALERT_TEXT = "awesome!";
-
-    /**
      * Локатор для кнопки Submit
      */
     @FindBy(css = "button.btn.btn-danger[type='submit']")

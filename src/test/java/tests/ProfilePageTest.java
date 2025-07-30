@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import pages.ProfilePage;
 
 import static org.testng.Assert.assertTrue;
-import static pages.ProfilePage.INTERESTS_TAB_NAME;
 import static utils.TestData.*;
 
 /**

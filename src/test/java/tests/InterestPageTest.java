@@ -7,8 +7,8 @@ import pages.InterestPage;
 import pojo.FormModel;
 
 import static org.testng.Assert.assertTrue;
-import static pages.InterestPage.PAYMENT_TAB_NAME;
-import static pages.InterestPage.PS_SELECTED_TEXT;
+import static utils.TestData.PAYMENT_TAB_NAME;
+import static utils.TestData.PS_SELECTED_TEXT;
 
 /**
  * Класс тестирования вкладки Interest

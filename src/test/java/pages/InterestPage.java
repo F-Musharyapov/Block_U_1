@@ -30,16 +30,6 @@ public class InterestPage extends BasePage {
     ObjectMapper objectMapper = new ObjectMapper();
 
     /**
-     * Константа названия вкладки PAYMENT
-     */
-    public static final String PAYMENT_TAB_NAME = "PAYMENT";
-
-    /**
-     * Константа названия radio-button PS
-     */
-    public static final String PS_SELECTED_TEXT = "ps";
-
-    /**
      * Локатор для radio-button xbox
      */
     @FindBy(xpath = "//input[@value='xbox']")
@@ -67,7 +57,7 @@ public class InterestPage extends BasePage {
      * Локатор для проверки статуса вкладки
      */
     @FindBy(css = "#status-buttons a.active")
-    public WebElement activeTab;
+    private WebElement activeTab;
 
     /**
      * Локатор для кнопки Submit
@@ -79,7 +69,7 @@ public class InterestPage extends BasePage {
      * Локатор для JSON текста под формой
      */
     @FindBy(css = "pre.ng-binding")
-    public WebElement textJSONWebElement;
+    private WebElement textJSONWebElement;
 
     /**
      * Метод клика по кнопке Next Section на вкладке Profile
@@ -88,6 +78,7 @@ public class InterestPage extends BasePage {
      */
     @Step("Клик по кнопке Next Section на вкладке Profile")
     public InterestPage clickToButtonNextSectionInterests() {
+        waitUntilVisible(driver, buttonNextSectionInterests);
         buttonNextSectionInterests.click();
         return this;
     }
@@ -123,6 +114,7 @@ public class InterestPage extends BasePage {
      */
     @Step("Клик по кнопке Next Section на вкладке Interest")
     public InterestPage clickToButtonNextSectionPayment() {
+        waitUntilVisible(driver, buttonNextSectionPayment);
         buttonNextSectionPayment.click();
         return this;
     }

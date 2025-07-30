@@ -5,9 +5,7 @@ import org.testng.annotations.Test;
 import pages.PaymentPage;
 
 import static org.testng.Assert.assertTrue;
-import static pages.PaymentPage.ALERT_TEXT;
-import static utils.TestData.getValideEmail;
-import static utils.TestData.getValideName;
+import static utils.TestData.*;
 
 /**
  * Класс тестирования вкладки  PaymentPage

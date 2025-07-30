@@ -13,6 +13,26 @@ public class TestData {
     private static final Faker faker = new Faker();
 
     /**
+     * Константа названия вкладки PAYMENT
+     */
+    public static final String PAYMENT_TAB_NAME = "PAYMENT";
+
+    /**
+     * Константа названия radio-button PS
+     */
+    public static final String PS_SELECTED_TEXT = "ps";
+
+    /**
+     * Константа названия вкладки INTERESTS
+     */
+    public static final String INTERESTS_TAB_NAME = "INTERESTS";
+
+    /**
+     * Константа текста всплывающего окна успеха
+     */
+    public static final String ALERT_TEXT = "awesome!";
+
+    /**
      * Идентификаторы
      */
     public static final String EMAIL_USER = "[a-z]{10}\\@[a-z]{5}\\.[a-z]{2}";

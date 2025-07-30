@@ -22,11 +22,6 @@ public class ProfilePage extends BasePage {
     }
 
     /**
-     * Константа названия вкладки PAYMENT
-     */
-    public static final String INTERESTS_TAB_NAME = "INTERESTS";
-
-    /**
      * Локатор с полем ввода name
      */
     @FindBy(css = "input[name='name']")
@@ -48,13 +43,13 @@ public class ProfilePage extends BasePage {
      * Локатор для проверки статуса вкладки
      */
     @FindBy(css = "#status-buttons a.active")
-    public WebElement activeTab;
+    private WebElement activeTab;
 
     /**
      * Локатор для проверки появления второй вкладки по классу текста
      */
     @FindBy(css = "label.ng-scope")
-    public WebElement textTabTwo;
+    private WebElement textTabTwo;
 
     /**
      * Метод ввода в поле name
