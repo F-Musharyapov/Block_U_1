@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,6 +20,11 @@ public class ProfilePage extends BasePage {
     public ProfilePage(WebDriver driver) {
         super(driver);
     }
+
+    /**
+     * Константа названия вкладки PAYMENT
+     */
+    public static final String INTERESTS_TAB_NAME = "INTERESTS";
 
     /**
      * Локатор с полем ввода name
@@ -55,6 +61,7 @@ public class ProfilePage extends BasePage {
      *
      * @return текущая страница
      */
+    @Step("Ввод {str} в поле name")
     public ProfilePage inputName(String str) {
         name.sendKeys(str);
         return this;
@@ -65,6 +72,7 @@ public class ProfilePage extends BasePage {
      *
      * @return текущая страница
      */
+    @Step("Ввод {str} в поле email")
     public ProfilePage inputEmail(String str) {
         email.sendKeys(str);
         return this;
@@ -75,6 +83,7 @@ public class ProfilePage extends BasePage {
      *
      * @return текущая страница
      */
+    @Step("Клик по кнопке Next Section на вкладке Profile")
     public ProfilePage clickToButtonNextSectionInterests() {
         buttonNextSectionInterests.click();
         return this;

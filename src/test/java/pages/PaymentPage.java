@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,6 +22,11 @@ public class PaymentPage extends BasePage {
     public PaymentPage(WebDriver driver) {
         super(driver);
     }
+
+    /**
+     * Константа текста всплывающего окна успеха
+     */
+    public static final String ALERT_TEXT = "awesome!";
 
     /**
      * Локатор для кнопки Submit
@@ -69,6 +75,7 @@ public class PaymentPage extends BasePage {
      *
      * @return текущая страница
      */
+    @Step("Клик по кнопке Next Section на вкладке Profile")
     public PaymentPage clickToButtonNextSectionInterests() {
         buttonNextSectionInterests.click();
         return this;
@@ -79,16 +86,18 @@ public class PaymentPage extends BasePage {
      *
      * @return текущая страница
      */
+    @Step("Клик по кнопке Next Section на вкладке Interest")
     public PaymentPage clickToButtonNextSectionPayment() {
         buttonNextSectionPayment.click();
         return this;
     }
 
     /**
-     * Метод клика по кнопке Next Section на вкладке Interest
+     * Метод клика по кнопке Submit на вкладке Payment
      *
      * @return текущая страница
      */
+    @Step("Клик по кнопке Submit на вкладке Payment")
     public PaymentPage clickToButtonSubmit() {
         waitUntilVisible(driver, buttonSubmit);
         buttonSubmit.click();
@@ -100,6 +109,7 @@ public class PaymentPage extends BasePage {
      *
      * @return текущая страница
      */
+    @Step("Ввод {str} в поле name")
     public PaymentPage inputName(String str) {
         waitUntilVisible(driver, name);
         name.sendKeys(str);
@@ -111,6 +121,7 @@ public class PaymentPage extends BasePage {
      *
      * @return текущая страница
      */
+    @Step("Ввод {str} в поле email")
     public PaymentPage inputEmail(String str) {
         waitUntilVisible(driver, email);
         email.sendKeys(str);
@@ -122,6 +133,7 @@ public class PaymentPage extends BasePage {
      *
      * @return текущая страница
      */
+    @Step("Клик по radio-button xbox")
     public PaymentPage clickToXbox() {
         waitUntilVisible(driver, xbox);
         xbox.click();
@@ -133,6 +145,7 @@ public class PaymentPage extends BasePage {
      *
      * @return текущая страница
      */
+    @Step("Клик по radio-button ps4")
     public PaymentPage clickToPS() {
         waitUntilVisible(driver, ps);
         ps.click();
@@ -153,6 +166,7 @@ public class PaymentPage extends BasePage {
     /**
      * Метод закрытия алерта
      */
+    @Step("Закрытие алерта")
     public void acceptAlert() {
         try {
             Alert alert = driver.switchTo().alert();

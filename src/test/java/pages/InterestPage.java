@@ -1,8 +1,12 @@
 package pages;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pojo.FormModel;
 
 import static utils.Waiters.waitUntilVisible;
 
@@ -19,6 +23,21 @@ public class InterestPage extends BasePage {
     public InterestPage(WebDriver driver) {
         super(driver);
     }
+
+    /**
+     * Экземпляр преобразователя между POJO и JSON
+     */
+    ObjectMapper objectMapper = new ObjectMapper();
+
+    /**
+     * Константа названия вкладки PAYMENT
+     */
+    public static final String PAYMENT_TAB_NAME = "PAYMENT";
+
+    /**
+     * Константа названия radio-button PS
+     */
+    public static final String PS_SELECTED_TEXT = "ps";
 
     /**
      * Локатор для radio-button xbox
@@ -60,13 +79,14 @@ public class InterestPage extends BasePage {
      * Локатор для JSON текста под формой
      */
     @FindBy(css = "pre.ng-binding")
-    private WebElement textJSONWebElement;
+    public WebElement textJSONWebElement;
 
     /**
      * Метод клика по кнопке Next Section на вкладке Profile
      *
      * @return текущая страница
      */
+    @Step("Клик по кнопке Next Section на вкладке Profile")
     public InterestPage clickToButtonNextSectionInterests() {
         buttonNextSectionInterests.click();
         return this;
@@ -77,6 +97,7 @@ public class InterestPage extends BasePage {
      *
      * @return текущая страница
      */
+    @Step("Клик по radio-button xbox")
     public InterestPage clickToXbox() {
         waitUntilVisible(driver, xbox);
         xbox.click();
@@ -88,6 +109,7 @@ public class InterestPage extends BasePage {
      *
      * @return текущая страница
      */
+    @Step("Клик по radio-button ps4")
     public InterestPage clickToPS() {
         waitUntilVisible(driver, ps);
         ps.click();
@@ -99,6 +121,7 @@ public class InterestPage extends BasePage {
      *
      * @return текущая страница
      */
+    @Step("Клик по кнопке Next Section на вкладке Interest")
     public InterestPage clickToButtonNextSectionPayment() {
         buttonNextSectionPayment.click();
         return this;
@@ -109,17 +132,23 @@ public class InterestPage extends BasePage {
      *
      * @return текст активной сеции
      */
+    @Step("Передача текста активной секции")
     public String getActiveTabText() {
         waitUntilVisible(driver, buttonSubmit);
         return activeTab.getText();
     }
 
     /**
-     * Метод получения текста из JSON
+     * Метод для получения данных формы в виде FormModel
      *
-     * @return текущая страница
+     * @return объект FormModel с данными формы
      */
-    public String getJsonText() {
-        return textJSONWebElement.getText();
+    @Step("Получение данных формы в виде FormData")
+    public FormModel getFormModel() {
+        try {
+            return objectMapper.readValue(textJSONWebElement.getText(), FormModel.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("Ошибка при десериализации JSON", e);
+        }
     }
 }
