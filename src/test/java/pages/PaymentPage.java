@@ -15,7 +15,7 @@ import static utils.Waiters.waitUntilVisible;
 public class PaymentPage extends BasePage {
 
     /**
-     * Конструктор создания страницы BasePage
+     * Конструктор создания страницы PaymentPage
      *
      * @param driver драйвер для управления браузером
      */
