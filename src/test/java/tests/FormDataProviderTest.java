@@ -1,11 +1,12 @@
 package tests;
 
-import config.BaseConfig;
 import io.qameta.allure.*;
-import org.aeonbits.owner.ConfigFactory;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.FormDataProviderPage;
+import utils.AshotScreenshot;
 import utils.TestData;
 
 import static org.testng.Assert.assertTrue;
@@ -15,17 +16,13 @@ public class FormDataProviderTest extends BaseTestFormDataProviderTest {
     /**
      * Экземпляр dataProviderTest
      */
-    //private FormDataProviderTest formDataProviderTest;
-
     private FormDataProviderPage formDataProviderPage;
 
-    private final BaseConfig config = ConfigFactory.create(BaseConfig.class, System.getenv());
-
     /**
-     * Метод предусловие перед тестами и инициализация вкладки
+     * Метод предусловие для инициализации вкладки
      */
     @BeforeMethod
-    public void profileClickNext() {
+    public void initialsBefore() {
         formDataProviderPage = new FormDataProviderPage(driver);
     }
 
@@ -43,12 +40,23 @@ public class FormDataProviderTest extends BaseTestFormDataProviderTest {
 
         if (result) {
             assertTrue(formDataProviderPage.getMessageHappy().isDisplayed(), "Сообщение успешной авторизации отсутствует");
+            formDataProviderPage.clickLogout();
         } else {
             if (type.contains("Checking input fields")) {
                 assertTrue(formDataProviderPage.getLoginButtonDisabled().isDisplayed(), "Ошибка, кнопка LOGIN должна быть не активной");
             } else {
-                assertTrue(formDataProviderPage.getLoginButtonDisabled().isDisplayed(), "Ошибка, кнопка LOGIN должна быть не активной");
+                assertTrue(formDataProviderPage.getErrorLogged().isDisplayed(), "Ошибка, авторизация с невалидными данными");
             }
+        }
+    }
+
+    /**
+     * Завершающий метод для скриншота, если тест упал
+     */
+    @AfterMethod
+    public void makeScreenShotAfterTestFailure(ITestResult result) {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            AshotScreenshot.makeScreenShot(driver);
         }
     }
 }

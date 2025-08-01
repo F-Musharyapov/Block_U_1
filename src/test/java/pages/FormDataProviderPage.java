@@ -53,6 +53,7 @@ public class FormDataProviderPage extends BasePage {
     /**
      * Локатор для кнопки logout
      */
+    @Getter
     @FindBy(css = "a[href=\"#/login\"]")
     private WebElement logout;
 
@@ -69,20 +70,6 @@ public class FormDataProviderPage extends BasePage {
     @Getter
     @FindBy(xpath = "//div[text()='Username or password is incorrect']")
     private WebElement ErrorLogged;
-
-    /**
-     * Локатор ошибки пустой строки Username
-     */
-    @Getter
-    @FindBy(xpath = "//div[@ng-messages=\"form.username.$error\"]")
-    private WebElement ErrorUsername;
-
-    /**
-     * Локатор ошибки пустой строки Password
-     */
-    @Getter
-    @FindBy(xpath = "div[ng-messages=\"form.password.$error\"]")
-    private WebElement ErrorPassword;
 
     /**
      * Метод ввода в поле username
@@ -127,6 +114,18 @@ public class FormDataProviderPage extends BasePage {
     @Step("Клик по кнопке Login")
     public FormDataProviderPage clickToButtonLogin() {
         loginButton.click();
+        return this;
+    }
+
+    /**
+     * Метод клика по кнопке logout
+     *
+     * @return текущая страница
+     */
+    @Step("Клик по кнопке logout")
+    public FormDataProviderPage clickLogout() {
+        waitUntilVisible(driver, logout);
+        logout.click();
         return this;
     }
 }

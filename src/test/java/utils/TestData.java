@@ -85,9 +85,9 @@ public class TestData {
         return new Object[][]{
 
                 {"angular", "password", "userdescriptions", true, "validate"},
+                {"angular1", "password", "userdescriptions", true, "validate"},
                 {"angular", "12345", "testuser", false, "novalidate"},
                 {"wronguser", "password", "testuser", false, "novalidate"},
-
                 {"", "password", "12345", false, "Checking input fields"},
                 {"angular", "", "12345", false, "Checking input fields"},
                 {"angular", "password", "", false, "Checking input fields"},
