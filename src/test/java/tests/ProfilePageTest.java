@@ -1,6 +1,8 @@
 package tests;
 
+import config.BaseConfig;
 import io.qameta.allure.*;
+import org.aeonbits.owner.ConfigFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.ProfilePage;
@@ -19,10 +21,16 @@ public class ProfilePageTest extends BaseTest {
     private ProfilePage profilePage;
 
     /**
+     * Экземпляр конфигурации с общими параметрами
+     */
+    private final BaseConfig config = ConfigFactory.create(BaseConfig.class, System.getenv());
+
+    /**
      * Метод предусловие перед тестами и инициализация вкладки
      */
     @BeforeMethod
     public void initialClass() {
+        driver.get(config.url());
         profilePage = new ProfilePage(driver);
     }
 

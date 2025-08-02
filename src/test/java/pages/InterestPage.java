@@ -16,7 +16,7 @@ import static utils.Waiters.waitUntilVisible;
 public class InterestPage extends BasePage {
 
     /**
-     * Конструктор создания страницы BasePage
+     * Конструктор создания страницы InterestPage
      *
      * @param driver драйвер для управления браузером
      */

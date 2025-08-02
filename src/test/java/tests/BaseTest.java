@@ -5,8 +5,10 @@ import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import utils.AshotScreenshot;
 
 import java.time.Duration;
 
@@ -40,7 +42,6 @@ public class BaseTest {
 
         driver = new ChromeDriver(options);
 
-        driver.get(config.url());
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -51,9 +52,17 @@ public class BaseTest {
      * Завершающий метод выхода из драйвера для всех тестов
      */
     @AfterMethod
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
+    public void tearDown(ITestResult result) {
+        try {
+            if (result.getStatus() == ITestResult.FAILURE && driver != null) {
+                AshotScreenshot.makeScreenShot(driver);
+            }
+        } catch (Exception e) {
+            System.err.println("Скриншот не создался, ошибка " + e.getMessage());
+        } finally {
+            if (driver != null) {
+                driver.quit();
+            }
         }
     }
 }

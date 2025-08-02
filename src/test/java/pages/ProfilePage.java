@@ -13,7 +13,7 @@ import static utils.Waiters.waitUntilVisible;
 public class ProfilePage extends BasePage {
 
     /**
-     * Конструктор создания страницы BasePage
+     * Конструктор создания страницы ProfilePage
      *
      * @param driver драйвер для управления браузером
      */

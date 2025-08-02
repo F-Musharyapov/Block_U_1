@@ -13,4 +13,6 @@ public interface BaseConfig extends Config {
     String driverPath();
 
     String url();
+
+    String authUrl();
 }

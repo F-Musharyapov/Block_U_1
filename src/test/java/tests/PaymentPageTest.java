@@ -1,6 +1,9 @@
 package tests;
 
+import config.BaseConfig;
 import io.qameta.allure.*;
+import org.aeonbits.owner.ConfigFactory;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.PaymentPage;
 
@@ -16,6 +19,19 @@ public class PaymentPageTest extends BaseTest {
      * Экземпляр вкладки PaymentPage
      */
     private PaymentPage paymentPage;
+
+    /**
+     * Экземпляр конфигурации с общими параметрами
+     */
+    private final BaseConfig config = ConfigFactory.create(BaseConfig.class, System.getenv());
+
+    /**
+     * Метод предусловие перед тестами
+     */
+    @BeforeMethod
+    public void profileClickNext() {
+        driver.get(config.url());
+    }
 
     @Epic(value = "Тестирование формы way2automation")
     @Feature(value = "Тестирование вкладки Payment")
