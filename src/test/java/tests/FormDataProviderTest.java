@@ -1,6 +1,8 @@
 package tests;
 
+import config.BaseConfig;
 import io.qameta.allure.*;
+import org.aeonbits.owner.ConfigFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -11,7 +13,7 @@ import utils.TestData;
 
 import static org.testng.Assert.assertTrue;
 
-public class FormDataProviderTest extends BaseTestFormDataProviderTest {
+public class FormDataProviderTest extends BaseTest {
 
     /**
      * Экземпляр dataProviderTest
@@ -19,10 +21,16 @@ public class FormDataProviderTest extends BaseTestFormDataProviderTest {
     private FormDataProviderPage formDataProviderPage;
 
     /**
+     * Экземпляр конфигурации с общими параметрами
+     */
+    private final BaseConfig config = ConfigFactory.create(BaseConfig.class, System.getenv());
+
+    /**
      * Метод предусловие для инициализации вкладки
      */
     @BeforeMethod
     public void initialsBefore() {
+        driver.get(config.authUrl());
         formDataProviderPage = new FormDataProviderPage(driver);
     }
 
@@ -31,14 +39,14 @@ public class FormDataProviderTest extends BaseTestFormDataProviderTest {
     @Story(value = "Тестирование формы авторизации с разными сценариями")
     @Test(description = "ID 4.1. Проверка авторизации с положительными и отрицательными сценариями", dataProvider = "Auth", dataProviderClass = TestData.class)
     @Severity(value = SeverityLevel.NORMAL)
-    public void parametersTest(String username, String password, String usernameDescription, boolean result, String type) {
+    public void parametersTest(String username, String password, String usernameDescription, boolean successResult, String type) {
 
         formDataProviderPage.inputUsername(username)
                 .inputPassword(password)
                 .inputUsernameDescription(usernameDescription)
                 .clickToButtonLogin();
 
-        if (result) {
+        if (successResult) {
             assertTrue(formDataProviderPage.getMessageHappy().isDisplayed(), "Сообщение успешной авторизации отсутствует");
             formDataProviderPage.clickLogout();
         } else {
@@ -53,10 +61,10 @@ public class FormDataProviderTest extends BaseTestFormDataProviderTest {
     /**
      * Завершающий метод для скриншота, если тест упал
      */
-    @AfterMethod
-    public void makeScreenShotAfterTestFailure(ITestResult result) {
-        if (result.getStatus() == ITestResult.FAILURE) {
-            AshotScreenshot.makeScreenShot(driver);
-        }
-    }
+    //@AfterMethod
+    //public void makeScreenShotAfterTestFailure(ITestResult result) {
+    //    if (result.getStatus() == ITestResult.FAILURE) {
+     //       AshotScreenshot.makeScreenShot(driver);
+     //   }
+    //}
 }
