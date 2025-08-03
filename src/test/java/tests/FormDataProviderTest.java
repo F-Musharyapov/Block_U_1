@@ -3,12 +3,9 @@ package tests;
 import config.BaseConfig;
 import io.qameta.allure.*;
 import org.aeonbits.owner.ConfigFactory;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.FormDataProviderPage;
-import utils.AshotScreenshot;
 import utils.TestData;
 
 import static org.testng.Assert.assertTrue;
@@ -16,7 +13,7 @@ import static org.testng.Assert.assertTrue;
 public class FormDataProviderTest extends BaseTest {
 
     /**
-     * Экземпляр dataProviderTest
+     * Экземпляр formDataProviderPage
      */
     private FormDataProviderPage formDataProviderPage;
 
@@ -57,14 +54,4 @@ public class FormDataProviderTest extends BaseTest {
             }
         }
     }
-
-    /**
-     * Завершающий метод для скриншота, если тест упал
-     */
-    //@AfterMethod
-    //public void makeScreenShotAfterTestFailure(ITestResult result) {
-    //    if (result.getStatus() == ITestResult.FAILURE) {
-     //       AshotScreenshot.makeScreenShot(driver);
-     //   }
-    //}
 }

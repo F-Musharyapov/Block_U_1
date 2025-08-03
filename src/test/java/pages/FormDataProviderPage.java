@@ -8,6 +8,9 @@ import org.openqa.selenium.support.FindBy;
 
 import static utils.Waiters.waitUntilVisible;
 
+/**
+ * Класс с методами для взаимодействия
+ */
 public class FormDataProviderPage extends BasePage {
 
     /**

@@ -15,4 +15,12 @@ public interface BaseConfig extends Config {
     String url();
 
     String authUrl();
+
+    String cookiesUrl();
+
+    String cookieslogin();
+
+    String cookiespass();
+
+    String fileCookiesAdress();
 }
