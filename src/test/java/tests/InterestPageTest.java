@@ -1,6 +1,8 @@
 package tests;
 
+import config.BaseConfig;
 import io.qameta.allure.*;
+import org.aeonbits.owner.ConfigFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.InterestPage;
@@ -21,10 +23,16 @@ public class InterestPageTest extends BaseTest {
     private InterestPage interestPage;
 
     /**
+     * Экземпляр конфигурации с общими параметрами
+     */
+    private final BaseConfig config = ConfigFactory.create(BaseConfig.class, System.getenv());
+
+    /**
      * Метод предусловие перед тестами и инициализация вкладки
      */
     @BeforeMethod
     public void profileClickNext() {
+        driver.get(config.url());
         interestPage = new InterestPage(driver);
         interestPage.clickToButtonNextSectionInterests();
     }

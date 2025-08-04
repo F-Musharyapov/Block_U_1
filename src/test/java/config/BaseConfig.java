@@ -13,4 +13,14 @@ public interface BaseConfig extends Config {
     String driverPath();
 
     String url();
+
+    String authUrl();
+
+    String cookiesUrl();
+
+    String cookieslogin();
+
+    String cookiespass();
+
+    String fileCookiesAdress();
 }

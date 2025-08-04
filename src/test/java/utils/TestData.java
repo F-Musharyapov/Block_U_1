@@ -1,6 +1,7 @@
 package utils;
 
 import com.github.javafaker.Faker;
+import org.testng.annotations.DataProvider;
 
 /**
  * Класс для работы с данными
@@ -72,5 +73,28 @@ public class TestData {
      */
     public static String getFakeName() {
         return faker.name().username() + faker.number().digits(3);
+    }
+
+    /**
+     * Метод DataProvider для подстановки данных
+     *
+     * @return двумерный массив Object[][]
+     */
+    @DataProvider(name = "Auth")
+    public Object[][] createData() {
+        return new Object[][]{
+
+                {"angular", "password", "userdescriptions", true, "validate"},
+                {"angular1", "password", "userdescriptions", true, "validate"},
+                {"angular", "12345", "testuser", false, "novalidate"},
+                {"wronguser", "password", "testuser", false, "novalidate"},
+                {"", "password", "12345", false, "Checking input fields"},
+                {"angular", "", "12345", false, "Checking input fields"},
+                {"angular", "password", "", false, "Checking input fields"},
+                {"", "", "", false, "Checking input fields"},
+                {"an", "password", "testuser", false, "Checking input fields"},
+                {"angular", "pa", "testuser", false, "Checking input fields"},
+                {"angular", "password", "ab", false, "Checking input fields"}
+        };
     }
 }
