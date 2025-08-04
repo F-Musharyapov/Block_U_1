@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 import lombok.Getter;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.Cookie;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -161,5 +162,39 @@ public class CookiesPage extends BasePage {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Метод снятия фокуса с поля login
+     *
+     * @return текущая страница
+     */
+    @Step("Снятие фокуса с поля login")
+    public void removFocusInput() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("document.activeElement.blur();");
+    }
+
+    /**
+     * Метод для понимания наличия фокуса на элементе
+     *
+     * @return true если фокус есть
+     */
+    @Step("Проверка наличия фокуса на элементе")
+    public String reviewFocusInput() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String activeTag = (String) js.executeScript("return document.activeElement.tagName;");
+        return activeTag;
+    }
+
+    /**
+     * Метод для понимания наличия скролла
+     *
+     * @return true если скроллбар скроллится
+     */
+    @Step("Проверка наличия скролла")
+    public boolean reviewScrollBar() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        return (Boolean) js.executeScript("return document.documentElement.scrollHeight>document.documentElement.clientHeight;");
     }
 }
