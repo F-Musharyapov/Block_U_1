@@ -17,7 +17,7 @@ import static org.testng.Assert.assertTrue;
 /**
  * Класс тестирования cookies страницы sql-ex.ru
  */
-public class CookiesTest extends BaseTest {
+public class CookiesTest extends BaseTestSeleniumGRID {
 
     /**
      * Экземпляр конфигурации с общими параметрами

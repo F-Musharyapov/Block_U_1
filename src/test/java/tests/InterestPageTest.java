@@ -15,7 +15,7 @@ import static utils.TestData.PS_SELECTED_TEXT;
 /**
  * Класс тестирования вкладки Interest
  */
-public class InterestPageTest extends BaseTest {
+public class InterestPageTest extends BaseTestSeleniumGRID {
 
     /**
      * Экземпляр вкладки InterestPage

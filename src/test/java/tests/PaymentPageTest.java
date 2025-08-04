@@ -13,7 +13,7 @@ import static utils.TestData.*;
 /**
  * Класс тестирования вкладки  PaymentPage
  */
-public class PaymentPageTest extends BaseTest {
+public class PaymentPageTest extends BaseTestSeleniumGRID {
 
     /**
      * Экземпляр вкладки PaymentPage

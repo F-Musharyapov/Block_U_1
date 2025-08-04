@@ -10,7 +10,7 @@ import pages.CookiesPage;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class JavaScriptExecutorTest extends BaseTest {
+public class JavaScriptExecutorTest extends BaseTestSeleniumGRID {
 
     /**
      * Экземпляр конфигурации с общими параметрами
@@ -32,16 +32,16 @@ public class JavaScriptExecutorTest extends BaseTest {
     }
 
     @Epic(value = "Тестирование сайта sql-ex.ru")
-    @Feature(value = "Тестирование cookies страницы sql-ex.ru")
-    @Story(value = "Авторизация")
-    @Test(description = "Авторизация и запись cookies")
+    @Feature(value = "Тестирование с использованием скрипта JavaScriptExecutor страницы sql-ex.ru")
+    @Story(value = "Использование скрипта JavaScriptExecutor")
+    @Test(description = "Убрать фокус и определить наличие скролла")
     @Severity(value = SeverityLevel.NORMAL)
     public void testAuth() {
 
         cookiesPage.removFocusInput();
         assertEquals("BODY", cookiesPage.reviewFocusInput());
 
-        cookiesPage.reviewScrollBar(); //определение наличия скролла
+        cookiesPage.reviewScrollBar();
         assertTrue(cookiesPage.reviewScrollBar(), "Скролл должен присутствовать на странице");
     }
 }

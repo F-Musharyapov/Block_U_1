@@ -13,7 +13,7 @@ import static utils.TestData.*;
 /**
  * Класс тестирования вкладки Profile
  */
-public class ProfilePageTest extends BaseTest {
+public class ProfilePageTest extends BaseTestSeleniumGRID {
 
     /**
      * Экземпляр вкладки ProfilePage
