@@ -38,7 +38,7 @@ public class ProfilePageTest extends BaseTestSeleniumGRID {
     @Epic(value = "Тестирование формы way2automation")
     @Feature(value = "Тестирование вкладки Profile")
     @Story(value = "Отправка без данных")
-    @Test(description = "ID 1.1. Проверка перехода на вкладку INTERESTS без заполнения данных", retryAnalyzer= RetryAnalyzer.class)
+    @Test(description = "ID 1.1. Проверка перехода на вкладку INTERESTS без заполнения данных", retryAnalyzer = RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
     public void testProfilePage_1_1() {
         profilePage.clickToButtonNextSectionInterests();
@@ -48,7 +48,7 @@ public class ProfilePageTest extends BaseTestSeleniumGRID {
     @Epic(value = "Тестирование формы way2automation")
     @Feature(value = "Тестирование вкладки Profile")
     @Story(value = "Ввод данных валидных данных")
-    @Test(description = "ID 1.2. Проверка перехода на вкладку INTERESTS с валидным именем", retryAnalyzer= RetryAnalyzer.class)
+    @Test(description = "ID 1.2. Проверка перехода на вкладку INTERESTS с валидным именем", retryAnalyzer = RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
     public void testProfilePage_1_2() {
         profilePage.inputName(getValideName())
@@ -59,7 +59,7 @@ public class ProfilePageTest extends BaseTestSeleniumGRID {
     @Epic(value = "Тестирование формы way2automation")
     @Feature(value = "Тестирование вкладки Profile")
     @Story(value = "Ввод данных валидных данных")
-    @Test(description = "ID 1.3. Проверка перехода на вкладку INTERESTS с валидной почтой", retryAnalyzer= RetryAnalyzer.class)
+    @Test(description = "ID 1.3. Проверка перехода на вкладку INTERESTS с валидной почтой", retryAnalyzer = RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
     public void testProfilePage_1_3() {
         profilePage.inputEmail(getValideEmail())
@@ -70,7 +70,7 @@ public class ProfilePageTest extends BaseTestSeleniumGRID {
     @Epic(value = "Тестирование формы way2automation")
     @Feature(value = "Тестирование вкладки Profile")
     @Story(value = "Ввод данных валидных данных")
-    @Test(description = "ID 1.4. Проверка перехода на вкладку INTERESTS с валидным именем и почтой", retryAnalyzer= RetryAnalyzer.class)
+    @Test(description = "ID 1.4. Проверка перехода на вкладку INTERESTS с валидным именем и почтой", retryAnalyzer = RetryAnalyzer.class)
     @Severity(value = SeverityLevel.CRITICAL)
     public void testProfilePage_1_4() {
         profilePage.inputName(getValideName())
@@ -82,7 +82,7 @@ public class ProfilePageTest extends BaseTestSeleniumGRID {
     @Epic(value = "Тестирование формы way2automation")
     @Feature(value = "Тестирование вкладки Profile")
     @Story(value = "Ввод данных невалидных данных")
-    @Test(description = "ID 1.5. Проверка ввода невалидного имени", retryAnalyzer= RetryAnalyzer.class)
+    @Test(description = "ID 1.5. Проверка ввода невалидного имени", retryAnalyzer = RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
     public void testProfilePage_1_5() {
         profilePage.inputEmail(getFakeName())
@@ -93,7 +93,7 @@ public class ProfilePageTest extends BaseTestSeleniumGRID {
     @Epic(value = "Тестирование формы way2automation")
     @Feature(value = "Тестирование вкладки Profile")
     @Story(value = "Ввод данных невалидных данных")
-    @Test(description = "ID 1.6. Проверка ввода некорректного email", retryAnalyzer= RetryAnalyzer.class)
+    @Test(description = "ID 1.6. Проверка ввода некорректного email", retryAnalyzer = RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
     public void testProfilePage_1_6() {
         profilePage.inputEmail(getFakeEmail())
