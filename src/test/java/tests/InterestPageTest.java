@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.InterestPage;
 import pojo.FormModel;
+import utils.RetryAnalyzer;
 
 import static org.testng.Assert.assertTrue;
 import static utils.TestData.PAYMENT_TAB_NAME;
@@ -40,7 +41,7 @@ public class InterestPageTest extends BaseTestSeleniumGRID {
     @Epic(value = "Тестирование формы way2automation")
     @Feature(value = "Тестирование вкладки Interest")
     @Story(value = "Отправка без данных")
-    @Test(description = "ID 2.1. Проверка перехода на вкладку PAYMENT без выбранного radio button")
+    @Test(description = "ID 2.1. Проверка перехода на вкладку PAYMENT без выбранного radio button", retryAnalyzer= RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
     public void testInterestPage_2_1() {
         interestPage.clickToButtonNextSectionPayment();
@@ -50,7 +51,7 @@ public class InterestPageTest extends BaseTestSeleniumGRID {
     @Epic(value = "Тестирование формы way2automation")
     @Feature(value = "Тестирование вкладки Interest")
     @Story(value = "Ввод данных валидных данных")
-    @Test(description = "ID 2.2. Проверка перехода на вкладку PAYMENT с выбранным radio button PS4")
+    @Test(description = "ID 2.2. Проверка перехода на вкладку PAYMENT с выбранным radio button PS4", retryAnalyzer= RetryAnalyzer.class)
     @Severity(value = SeverityLevel.CRITICAL)
     public void testInterestPage_2_2() {
         interestPage.clickToPS()
@@ -61,7 +62,7 @@ public class InterestPageTest extends BaseTestSeleniumGRID {
     @Epic(value = "Тестирование формы way2automation")
     @Feature(value = "Тестирование вкладки Interest")
     @Story(value = "Ввод данных валидных данных")
-    @Test(description = "ID 2.3. Проверка перехода на вкладку PAYMENT с выбранным radio button XBOX")
+    @Test(description = "ID 2.3. Проверка перехода на вкладку PAYMENT с выбранным radio button XBOX", retryAnalyzer= RetryAnalyzer.class)
     @Severity(value = SeverityLevel.CRITICAL)
     public void testInterestPage_2_3() {
         interestPage.clickToXbox()
@@ -72,7 +73,7 @@ public class InterestPageTest extends BaseTestSeleniumGRID {
     @Epic(value = "Тестирование формы way2automation")
     @Feature(value = "Тестирование вкладки Interest")
     @Story(value = "Ввод данных невалидных данных")
-    @Test(description = "ID 2.4. Попытка выбрать оба варианта")
+    @Test(description = "ID 2.4. Попытка выбрать оба варианта", retryAnalyzer= RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
     public void testInterestPage_2_4() {
         interestPage.clickToXbox()

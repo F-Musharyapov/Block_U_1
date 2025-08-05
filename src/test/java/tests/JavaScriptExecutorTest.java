@@ -6,6 +6,7 @@ import org.aeonbits.owner.ConfigFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.CookiesPage;
+import utils.RetryAnalyzer;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -34,7 +35,7 @@ public class JavaScriptExecutorTest extends BaseTestSeleniumGRID {
     @Epic(value = "Тестирование сайта sql-ex.ru")
     @Feature(value = "Тестирование с использованием скрипта JavaScriptExecutor страницы sql-ex.ru")
     @Story(value = "Использование скрипта JavaScriptExecutor")
-    @Test(description = "Убрать фокус и определить наличие скролла")
+    @Test(description = "Убрать фокус и определить наличие скролла", retryAnalyzer= RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
     public void testAuth() {
 

@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.CookiesPage;
+import utils.RetryAnalyzer;
 
 import java.io.IOException;
 import java.util.Set;
@@ -41,7 +42,7 @@ public class CookiesTest extends BaseTestSeleniumGRID {
     @Epic(value = "Тестирование сайта sql-ex.ru")
     @Feature(value = "Тестирование cookies страницы sql-ex.ru")
     @Story(value = "Авторизация")
-    @Test(description = "Авторизация и запись cookies")
+    @Test(description = "Авторизация и запись cookies", retryAnalyzer= RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
     public void testAuth() throws IOException {
         cookiesPage.inputLogin(config.cookieslogin())
@@ -55,7 +56,7 @@ public class CookiesTest extends BaseTestSeleniumGRID {
     @Epic(value = "Тестирование сайта sql-ex.ru")
     @Feature(value = "Тестирование cookies страницы sql-ex.ru")
     @Story(value = "Сookie")
-    @Test(dependsOnMethods = "testAuth", description = "Проверка клика по ссылке с помощью cookie")
+    @Test(dependsOnMethods = "testAuth", description = "Проверка клика по ссылке с помощью cookie", retryAnalyzer= RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
     public void testAuthCookies() throws IOException {
         cookiesPage.readAllCookie(config.fileCookiesAdress());
