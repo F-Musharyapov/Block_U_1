@@ -42,7 +42,7 @@ public class CookiesTest extends BaseTestSeleniumGRID {
     @Epic(value = "Тестирование сайта sql-ex.ru")
     @Feature(value = "Тестирование cookies страницы sql-ex.ru")
     @Story(value = "Авторизация")
-    @Test(description = "Авторизация и запись cookies", retryAnalyzer= RetryAnalyzer.class)
+    @Test(description = "Авторизация и запись cookies", retryAnalyzer = RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
     public void testAuth() throws IOException {
         cookiesPage.inputLogin(config.cookieslogin())
@@ -56,7 +56,7 @@ public class CookiesTest extends BaseTestSeleniumGRID {
     @Epic(value = "Тестирование сайта sql-ex.ru")
     @Feature(value = "Тестирование cookies страницы sql-ex.ru")
     @Story(value = "Сookie")
-    @Test(dependsOnMethods = "testAuth", description = "Проверка клика по ссылке с помощью cookie", retryAnalyzer= RetryAnalyzer.class)
+    @Test(dependsOnMethods = "testAuth", description = "Проверка клика по ссылке с помощью cookie", retryAnalyzer = RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
     public void testAuthCookies() throws IOException {
         cookiesPage.readAllCookie(config.fileCookiesAdress());
