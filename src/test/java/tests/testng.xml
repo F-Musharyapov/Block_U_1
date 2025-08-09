@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Общий сьют" parallel="classes" thread-count="3">
+    <test name="AllTests">
+        <classes>
+            <class name="tests.ProfilePageTest"/>
+            <class name="tests.InterestPageTest"/>
+            <class name="tests.PaymentPageTest"/>
+            <class name="tests.CookiesTest"/>
+            <class name="tests.FormDataProviderTest"/>
+            <class name="tests.JavaScriptExecutorTest"/>
+        </classes>
+    </test>
+</suite>
