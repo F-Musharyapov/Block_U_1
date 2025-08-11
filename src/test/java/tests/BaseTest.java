@@ -3,12 +3,12 @@ package tests;
 import config.BaseConfig;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import utils.AshotScreenshot;
+import utils.DriverFactory;
 
 import java.time.Duration;
 
@@ -29,18 +29,20 @@ public class BaseTest {
 
     /**
      * Общие настройки для всех тестов, перед выполнением каждого теста
+     *
+     * @param browser строка с параметром названия браузера
+     * @param grid    строка с параметром использование Selenium GRID
+     * @throws Exception если не нашелся подходящий браузер
      */
     @BeforeMethod
-    public void setUp() {
+    @Parameters({"browser", "grid"})
+    public void setUp(String browser, boolean grid) throws Exception {
 
-        System.setProperty(config.driverProperty(), config.driverPath());
-
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--ignore-certificate-errors");
-        options.addArguments("--disable-gpu");
-        options.addArguments("--no-sandbox");
-
-        driver = new ChromeDriver(options);
+        if (grid) {
+            driver = DriverFactory.getGridDriver(browser);
+        } else if (!(grid)) {
+            driver = DriverFactory.getWebDriver(browser);
+        }
 
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
