@@ -6,14 +6,15 @@ import org.aeonbits.owner.ConfigFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.PaymentPage;
+import utils.RetryAnalyzer;
 
 import static org.testng.Assert.assertTrue;
 import static utils.TestData.*;
 
 /**
- * Класс тестирования вкладки  PaymentPage
+ * Класс тестирования вкладки PaymentPage
  */
-public class PaymentPageTest extends BaseTest {
+public class PaymentPageTest extends BaseTestSeleniumGRID {
 
     /**
      * Экземпляр вкладки PaymentPage
@@ -36,7 +37,7 @@ public class PaymentPageTest extends BaseTest {
     @Epic(value = "Тестирование формы way2automation")
     @Feature(value = "Тестирование вкладки Payment")
     @Story(value = "Отправка без данных")
-    @Test(description = "ID 3.1. Отправка пустой формы")
+    @Test(description = "ID 3.1. Отправка пустой формы", retryAnalyzer = RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
     public void testPaymentPage_3_1() {
         paymentPage = new PaymentPage(driver)
@@ -50,7 +51,7 @@ public class PaymentPageTest extends BaseTest {
     @Epic(value = "Тестирование формы way2automation")
     @Feature(value = "Тестирование вкладки Payment")
     @Story(value = "Ввод данных валидных данных")
-    @Test(description = "ID 3.2. Отправка с заполненным именем")
+    @Test(description = "ID 3.2. Отправка с заполненным именем", retryAnalyzer = RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
     public void testPaymentPage_3_2() {
         paymentPage = new PaymentPage(driver)
@@ -65,7 +66,7 @@ public class PaymentPageTest extends BaseTest {
     @Epic(value = "Тестирование формы way2automation")
     @Feature(value = "Тестирование вкладки Payment")
     @Story(value = "Ввод данных валидных данных")
-    @Test(description = "ID 3.3. Отправка с выбранным интересом")
+    @Test(description = "ID 3.3. Отправка с выбранным интересом", retryAnalyzer = RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
     public void testPaymentPage_3_3() {
         paymentPage = new PaymentPage(driver)
@@ -80,7 +81,7 @@ public class PaymentPageTest extends BaseTest {
     @Epic(value = "Тестирование формы way2automation")
     @Feature(value = "Тестирование вкладки Payment")
     @Story(value = "Ввод данных валидных данных")
-    @Test(description = "ID 3.4. Отправка со всеми заполненными полями")
+    @Test(description = "ID 3.4. Отправка со всеми заполненными полями", retryAnalyzer = RetryAnalyzer.class)
     @Severity(value = SeverityLevel.CRITICAL)
     public void testPaymentPage_3_4() {
         paymentPage = new PaymentPage(driver)
