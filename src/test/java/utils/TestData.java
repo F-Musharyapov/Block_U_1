@@ -9,6 +9,11 @@ import org.testng.annotations.DataProvider;
 public class TestData {
 
     /**
+     * Экземпляр для списка браузеров
+     */
+    private EnumBrowsers enumBrowsers;
+
+    /**
      * Экземпляр для Faker
      */
     private static final Faker faker = new Faker();
@@ -83,7 +88,6 @@ public class TestData {
     @DataProvider(name = "Auth")
     public Object[][] createData() {
         return new Object[][]{
-
                 {"angular", "password", "userdescriptions", true, "validate"},
                 {"angular1", "password", "userdescriptions", true, "validate"},
                 {"angular", "12345", "testuser", false, "novalidate"},
@@ -96,5 +100,20 @@ public class TestData {
                 {"angular", "pa", "testuser", false, "Checking input fields"},
                 {"angular", "password", "ab", false, "Checking input fields"}
         };
+    }
+
+    /**
+     * Метод для подстановки названий браузеров
+     * @param enumBrowsers принимает константу
+     * @return Undefined
+     */
+    String getEnumBrowsers(EnumBrowsers enumBrowsers){
+        switch(enumBrowsers){
+            case FIREFOX: return "Firefox";
+            case CHROME: return "Chrome";
+            case EDGE: return "Edge";
+            case INTERNET_EXPLORER: return "InternetExplorer";
+            default: return "Undefined";
+        }
     }
 }

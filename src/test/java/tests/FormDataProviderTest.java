@@ -11,7 +11,7 @@ import utils.TestData;
 
 import static org.testng.Assert.assertTrue;
 
-public class FormDataProviderTest extends BaseTestSeleniumGRID {
+public class FormDataProviderTest extends BaseTest {
 
     /**
      * Экземпляр formDataProviderPage

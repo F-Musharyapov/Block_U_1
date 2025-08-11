@@ -11,7 +11,7 @@ import utils.RetryAnalyzer;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class JavaScriptExecutorTest extends BaseTestSeleniumGRID {
+public class JavaScriptExecutorTest extends BaseTest {
 
     /**
      * Экземпляр конфигурации с общими параметрами

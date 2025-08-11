@@ -8,19 +8,29 @@ import org.aeonbits.owner.Config;
 @Config.Sources({"classpath:config.properties"})
 public interface BaseConfig extends Config {
 
-    String driverProperty();
-
-    String driverPath();
-
-    String url();
+    String formUrl();
 
     String authUrl();
+
+    String driverPathChrome();
+
+    String driverPropertyChrome();
+
+    String driverPathEdge();
+
+    String driverPropertyEdge();
+
+    String driverPathIE();
+
+    String driverPropertyIE();
+
+    String remoteUrl();
+
+    String fileCookiesAdress();
 
     String cookiesUrl();
 
     String cookieslogin();
 
     String cookiespass();
-
-    String fileCookiesAdress();
 }
