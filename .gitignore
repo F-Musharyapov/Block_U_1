@@ -2,5 +2,6 @@
 /target/
 /.allure/
 /src/test/resources/cookie.txt
+/src/test/resources/config.properties
 /test-output/
 /Block_U_1.iml

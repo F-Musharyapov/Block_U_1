@@ -11,7 +11,7 @@ import utils.TestData;
 
 import static org.testng.Assert.assertTrue;
 
-public class FormDataProviderTest extends BaseTestSeleniumGRID {
+public class FormDataProviderTest extends BaseTest {
 
     /**
      * Экземпляр formDataProviderPage
@@ -35,7 +35,7 @@ public class FormDataProviderTest extends BaseTestSeleniumGRID {
     @Epic(value = "Тестирование формы way2automation")
     @Feature(value = "Тестирование формы авторизации")
     @Story(value = "Тестирование формы авторизации с разными сценариями")
-    @Test(description = "ID 4.1. Проверка авторизации с положительными и отрицательными сценариями", dataProvider = "Auth", dataProviderClass = TestData.class, retryAnalyzer= RetryAnalyzer.class)
+    @Test(description = "ID 4.1. Проверка авторизации с положительными и отрицательными сценариями", dataProvider = "Auth", dataProviderClass = TestData.class, retryAnalyzer = RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
     public void parametersTest(String username, String password, String usernameDescription, boolean successResult, String type) {
 
