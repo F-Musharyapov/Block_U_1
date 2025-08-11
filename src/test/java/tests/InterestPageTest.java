@@ -16,7 +16,7 @@ import static utils.TestData.PS_SELECTED_TEXT;
 /**
  * Класс тестирования вкладки Interest
  */
-public class InterestPageTest extends BaseTestSeleniumGRID {
+public class InterestPageTest extends BaseTest {
 
     /**
      * Экземпляр вкладки InterestPage
@@ -33,7 +33,7 @@ public class InterestPageTest extends BaseTestSeleniumGRID {
      */
     @BeforeMethod
     public void profileClickNext() {
-        driver.get(config.url());
+        driver.get(config.formUrl());
         interestPage = new InterestPage(driver);
         interestPage.clickToButtonNextSectionInterests();
     }

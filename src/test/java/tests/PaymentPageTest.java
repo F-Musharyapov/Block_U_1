@@ -14,7 +14,7 @@ import static utils.TestData.*;
 /**
  * Класс тестирования вкладки PaymentPage
  */
-public class PaymentPageTest extends BaseTestSeleniumGRID {
+public class PaymentPageTest extends BaseTest {
 
     /**
      * Экземпляр вкладки PaymentPage
@@ -31,7 +31,7 @@ public class PaymentPageTest extends BaseTestSeleniumGRID {
      */
     @BeforeMethod
     public void profileClickNext() {
-        driver.get(config.url());
+        driver.get(config.formUrl());
     }
 
     @Epic(value = "Тестирование формы way2automation")

@@ -14,7 +14,7 @@ import static utils.TestData.*;
 /**
  * Класс тестирования вкладки Profile
  */
-public class ProfilePageTest extends BaseTestSeleniumGRID {
+public class ProfilePageTest extends BaseTest {
 
     /**
      * Экземпляр вкладки ProfilePage
@@ -31,7 +31,7 @@ public class ProfilePageTest extends BaseTestSeleniumGRID {
      */
     @BeforeMethod
     public void initialClass() {
-        driver.get(config.url());
+        driver.get(config.formUrl());
         profilePage = new ProfilePage(driver);
     }
 
