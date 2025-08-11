@@ -16,6 +16,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.URL;
 
+import static utils.EnumBrowsers.*;
+
 /**
  * Класс для создания различных WebDriver в зависимости от входных параметров (любые браузеры, с GRID и без него)
  */
@@ -36,21 +38,21 @@ public class DriverFactory {
     public static WebDriver getWebDriver(String browser) throws Exception {
         WebDriver driver;
 
-        if (browser.equalsIgnoreCase("Firefox")) {
+        if (browser.equalsIgnoreCase(String.valueOf(FIREFOX))) {
             driver = new FirefoxDriver();
 
-        } else if (browser.equalsIgnoreCase("Chrome")) {
+        } else if (browser.equalsIgnoreCase(String.valueOf(CHROME))) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--ignore-certificate-errors");
             options.addArguments("--disable-gpu");
             options.addArguments("--no-sandbox");
             driver = new ChromeDriver();
 
-        } else if (browser.equalsIgnoreCase("Edge")) {
+        } else if (browser.equalsIgnoreCase(String.valueOf(EDGE))) {
             System.setProperty(config.driverPropertyEdge(), config.driverPathEdge());
             driver = new EdgeDriver();
 
-        } else if (browser.equalsIgnoreCase("InternetExplorer")) {
+        } else if (browser.equalsIgnoreCase(String.valueOf(INTERNET_EXPLORER))) {
             InternetExplorerOptions options = new InternetExplorerOptions();
             System.setProperty(config.driverPropertyIE(), config.driverPathIE());
             options.setCapability(InternetExplorerDriver.ENABLE_PERSISTENT_HOVERING, false);
@@ -77,28 +79,28 @@ public class DriverFactory {
 
         MutableCapabilities options;
 
-        if (browser.equalsIgnoreCase("Firefox")) {
+        if (browser.equalsIgnoreCase(String.valueOf(FIREFOX))) {
             FirefoxOptions firefoxOptions = new FirefoxOptions();
             firefoxOptions.setCapability("platformName", "Windows");
             firefoxOptions.setCapability("se:name", "My test Firefox");
             firefoxOptions.setCapability("se:sampleMetadata", "Sample metadata value");
             options = firefoxOptions;
 
-        } else if (browser.equalsIgnoreCase("Chrome")) {
+        } else if (browser.equalsIgnoreCase(String.valueOf(CHROME))) {
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.setCapability("platformName", "Windows");
             chromeOptions.setCapability("se:name", "My test Chrome");
             chromeOptions.setCapability("se:sampleMetadata", "Sample metadata value");
             options = chromeOptions;
 
-        } else if (browser.equalsIgnoreCase("Edge")) {
+        } else if (browser.equalsIgnoreCase(String.valueOf(EDGE))) {
             EdgeOptions edgeOptions = new EdgeOptions();
             edgeOptions.setCapability("platformName", "Windows");
             edgeOptions.setCapability("se:name", "My test Edge");
             edgeOptions.setCapability("se:sampleMetadata", "Sample metadata value");
             options = edgeOptions;
 
-        } else if (browser.equalsIgnoreCase("InternetExplorer")) {
+        } else if (browser.equalsIgnoreCase(String.valueOf(INTERNET_EXPLORER))) {
             InternetExplorerOptions internetExplorerOptions = new InternetExplorerOptions();
             System.setProperty(config.driverPropertyIE(), config.driverPathIE());
             internetExplorerOptions.setCapability("platformName", "Windows");
