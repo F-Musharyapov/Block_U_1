@@ -33,4 +33,10 @@ public interface BaseConfig extends Config {
     String cookieslogin();
 
     String cookiespass();
+
+    String basicAuthUrl();
+
+    String basicAuthLogin();
+
+    String basicAuthPassword();
 }
