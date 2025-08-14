@@ -8,6 +8,7 @@
             <class name="tests.InterestPageTest"/>
         </classes>
     </test>
+
     <test name="Firefox Test">
         <parameter name="grid" value="false"/>
         <parameter name="browser" value="Firefox"/>
@@ -29,6 +30,7 @@
             <class name="tests.CookiesTest"/>
             <class name="tests.JavaScriptExecutorTest"/>
             <class name="tests.DragnDropTest"/>
+            <class name="tests.TabsPageTest"/>
         </classes>
     </test>
 </suite>

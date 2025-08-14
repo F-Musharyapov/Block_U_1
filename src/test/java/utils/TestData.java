@@ -44,6 +44,11 @@ public class TestData {
     public static final String ALERT_TEXT = "awesome!";
 
     /**
+     * Константа названия ссылки для TabsPageTest
+     */
+    public static final String NAME_LINK = "New Browser Tab";
+
+    /**
      * Идентификаторы
      */
     public static final String EMAIL_USER = "[a-z]{10}\\@[a-z]{5}\\.[a-z]{2}";
