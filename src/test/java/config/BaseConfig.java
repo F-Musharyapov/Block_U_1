@@ -39,4 +39,10 @@ public interface BaseConfig extends Config {
     String tabsUrl();
 
     String alertUrl();
+
+    String basicAuthUrl();
+
+    String basicAuthLogin();
+
+    String basicAuthPassword();
 }
