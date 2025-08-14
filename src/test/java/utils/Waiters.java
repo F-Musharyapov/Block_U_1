@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 
 /**
@@ -12,7 +13,7 @@ import java.time.Duration;
 public class Waiters {
 
     /**
-     * Ожидает в течении 5 секунд появления элемента на странице.
+     * Ожидает в течение 15 секунд появления элемента на странице.
      *
      * @param driver  экземпляр драйвера браузера
      * @param element элемент
@@ -22,12 +23,21 @@ public class Waiters {
     }
 
     /**
-     * Ожидает в течении 10 секунд появления алерта в браузере.
+     * Ожидает в течение 15 секунд появления алерта в браузере.
      *
-     * @param driver  экземпляр драйвера браузера
+     * @param driver экземпляр драйвера браузера
      */
     public static void waitForAlert(final WebDriver driver) {
         new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.alertIsPresent());
     }
-}
 
+    /**
+     * Ожидает в течение 15 секунд элемент в DOM (даже если невидим)
+     *
+     * @param driver  экземпляр драйвера браузера
+     * @param element элемент
+     */
+    public static void waitUntilPresent(WebDriver driver, WebElement element) {
+        new WebDriverWait(driver, Duration.ofSeconds(15)).until(d -> element.isDisplayed());
+    }
+}

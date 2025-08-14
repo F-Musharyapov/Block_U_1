@@ -34,5 +34,7 @@ public interface BaseConfig extends Config {
 
     String cookiespass();
 
+    String dragnDropUrl();
+
     String tabsUrl();
 }

@@ -29,6 +29,7 @@
         <classes>
             <class name="tests.CookiesTest"/>
             <class name="tests.JavaScriptExecutorTest"/>
+            <class name="tests.DragnDropTest"/>
             <class name="tests.TabsPageTest"/>
         </classes>
     </test>
