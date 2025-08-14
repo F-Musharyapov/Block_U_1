@@ -37,4 +37,6 @@ public interface BaseConfig extends Config {
     String dragnDropUrl();
 
     String tabsUrl();
+
+    String alertUrl();
 }

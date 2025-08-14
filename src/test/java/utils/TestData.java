@@ -49,6 +49,11 @@ public class TestData {
     public static final String NAME_LINK = "New Browser Tab";
 
     /**
+     * Константа текста всплывающего окна alert теста AlertTest
+     */
+    public static final String ALERT_INPUT = "Selenium";
+
+    /**
      * Идентификаторы
      */
     public static final String EMAIL_USER = "[a-z]{10}\\@[a-z]{5}\\.[a-z]{2}";
