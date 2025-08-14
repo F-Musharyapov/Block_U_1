@@ -19,6 +19,11 @@ public class TestData {
     private static final Faker faker = new Faker();
 
     /**
+     * Константа текста успеха dragnDropPage
+     */
+    public static final String DROPPED = "Dropped!";
+
+    /**
      * Константа названия вкладки PAYMENT
      */
     public static final String PAYMENT_TAB_NAME = "PAYMENT";
