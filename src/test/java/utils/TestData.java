@@ -19,6 +19,11 @@ public class TestData {
     private static final Faker faker = new Faker();
 
     /**
+     * Константа текста успеха dragnDropPage
+     */
+    public static final String DROPPED = "Dropped!";
+
+    /**
      * Константа названия вкладки PAYMENT
      */
     public static final String PAYMENT_TAB_NAME = "PAYMENT";
@@ -37,6 +42,11 @@ public class TestData {
      * Константа текста всплывающего окна успеха
      */
     public static final String ALERT_TEXT = "awesome!";
+
+    /**
+     * Константа названия ссылки для TabsPageTest
+     */
+    public static final String NAME_LINK = "New Browser Tab";
 
     /**
      * Константа текста всплывающего окна alert теста AlertTest
