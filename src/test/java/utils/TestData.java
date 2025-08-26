@@ -54,10 +54,42 @@ public class TestData {
     public static final String ALERT_INPUT = "Selenium";
 
     /**
+     * Константа всплывающего текста BankingSampleFormPage
+     */
+    public static final String SUCCESS_MESSAGE = "User registered successfully!";
+
+    /**
      * Идентификаторы
      */
     public static final String EMAIL_USER = "[a-z]{10}\\@[a-z]{5}\\.[a-z]{2}";
     public static final String NOVALIDE_EMAIL_USER = "[a-z]{10}\\@\\.[a-z]{2}";
+
+    /**
+     * Метод генерации валидных данных для поля First Name страницы BankingSampleFormPage
+     *
+     * @return сгенерированное имя
+     */
+    public static String generateFirstName() {
+        return faker.name().firstName();
+    }
+
+    /**
+     * Метод генерации валидных данных для поля Last Name страницы BankingSampleFormPage
+     *
+     * @return сгенерированное имя
+     */
+    public static String generateLastName() {
+        return faker.name().lastName();
+    }
+
+    /**
+     * Метод генерации валидных данных для поля Password страницы BankingSampleFormPage
+     *
+     * @return сгенерированное имя
+     */
+    public static String generatePassword() {
+        return faker.internet().password(8, 16, true, true, true);
+    }
 
     /**
      * Метод генерации валидных данных для поля email

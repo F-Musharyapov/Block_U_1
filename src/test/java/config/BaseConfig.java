@@ -45,4 +45,6 @@ public interface BaseConfig extends Config {
     String basicAuthLogin();
 
     String basicAuthPassword();
+
+    String bankingUrl();
 }
