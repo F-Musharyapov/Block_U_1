@@ -23,7 +23,7 @@ public class AlertsTest extends BaseTest {
     private final BaseConfig config = ConfigFactory.create(BaseConfig.class, System.getenv());
 
     /**
-     * Экземпляр страницы TabsPage
+     * Экземпляр страницы
      */
     private static AlertsPage alertsPage;
 
