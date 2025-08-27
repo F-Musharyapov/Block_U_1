@@ -166,7 +166,6 @@ public class BankingSampleFormPage extends BasePage {
      */
     @Step("Клик по чекбоксу Sports")
     public BankingSampleFormPage clickCheckBoxSports() {
-        //waitUntilVisible(driver, checkBoxSports);
         checkBoxSports.click();
         return this;
     }
