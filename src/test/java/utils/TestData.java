@@ -3,6 +3,8 @@ package utils;
 import com.github.javafaker.Faker;
 import org.testng.annotations.DataProvider;
 
+import java.util.Random;
+
 /**
  * Класс для работы с данными
  */
@@ -17,6 +19,11 @@ public class TestData {
      * Экземпляр для Faker
      */
     private static final Faker faker = new Faker();
+
+    /**
+     * Экземпляр для Random
+     */
+    private static final Random random = new Random();
 
     /**
      * Константа текста успеха dragnDropPage
@@ -57,6 +64,26 @@ public class TestData {
      * Константа всплывающего текста BankingSampleFormPage
      */
     public static final String SUCCESS_MESSAGE = "User registered successfully!";
+
+    /**
+     * Константа всплывающего текста алерта при создании customer на BankingTest
+     */
+    public static final String CUSTOMER_ADDED_SUCCESS_MESSAGE = "Customer added successfully with customer id";
+
+    /**
+     * Константа всплывающего текста алерта при добавлении Currency для customer на BankingTest
+     */
+    public static final String CURRENCY_SUCCESS_MESSAGE = "Account created successfully with account Number";
+
+    /**
+     * Массив для выбора Currency для customer на BankingTest
+     */
+    public static final String[] CURRENCY_SELECT = {"Dollar", "Pound", "Rupee"};
+
+    /**
+     * Константа PostCode для customer на BankingTest
+     */
+    public static final String POST_CODE_CUSTOMER = "[0-9]{6}";
 
     /**
      * Идентификаторы
@@ -125,6 +152,24 @@ public class TestData {
      */
     public static String getFakeName() {
         return faker.name().username() + faker.number().digits(3);
+    }
+
+    /**
+     * Метод генерации post code для BankingTest
+     *
+     * @return сгенерированное имя
+     */
+    public static String generateSimplePostCode() {
+        return faker.regexify(POST_CODE_CUSTOMER);
+    }
+
+    /**
+     * Метод генерации Currency для customer на BankingTest
+     *
+     * @return один Currency из массива
+     */
+    public static String getRandomCurrency() {
+        return CURRENCY_SELECT[random.nextInt(CURRENCY_SELECT.length)];
     }
 
     /**
