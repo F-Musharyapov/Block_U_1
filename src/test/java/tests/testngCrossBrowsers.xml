@@ -23,6 +23,7 @@
             <class name="tests.FormDataProviderTest"/>
         </classes>
     </test>
+
     <test name="Chrome Test">
         <parameter name="grid" value="false"/>
         <parameter name="browser" value="Chrome"/>
@@ -33,6 +34,7 @@
             <class name="tests.TabsPageTest"/>
             <class name="tests.AlertsTest"/>
             <class name="tests.BasicAuthTest"/>
+            <class name="tests.BankingSampleFormTest"/>
         </classes>
     </test>
 </suite>
