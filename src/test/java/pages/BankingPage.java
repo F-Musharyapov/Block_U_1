@@ -765,4 +765,29 @@ public class BankingPage extends BasePage {
         buttonLogoutCustomerLoginInterface.click();
         return this;
     }
+
+    /**
+     * Метод для извлечения транзакций из строк таблицы вкладки Transactions интерфейса Customer Login
+     * @return подсчитанный баланс пользователя
+     */
+    public int calculateBalanceTransactionsCustomerLoginInterface() {
+        List<WebElement> rows = tableTransactionsСustomerLoginInterface.findElements(By.cssSelector("tr"));
+
+        int totalCredit = 0;
+        int totalDebit = 0;
+
+        for (int i = 0; i < rows.size(); i++) {
+            WebElement row = rows.get(i);
+
+            int amount = Integer.parseInt(row.findElement(By.cssSelector("td:nth-child(2)")).getText());
+            String type = row.findElement(By.cssSelector("td:nth-child(3)")).getText();
+
+            if("Credit".equals(type)){
+                totalCredit += amount;
+            } else if ("Debit".equals(type)) {
+                totalDebit  += amount;
+            }
+        }
+        return totalCredit-totalDebit;
+    }
 }

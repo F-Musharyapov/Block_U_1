@@ -17,6 +17,7 @@ import utils.RetryAnalyzer;
 import java.time.Duration;
 
 import static org.testng.Assert.*;
+import static org.testng.Assert.assertFalse;
 import static utils.TestData.*;
 
 /**
@@ -229,8 +230,7 @@ public class BankingTest {
     @Story(value = "Тестирование вкладки Customer Login")
     @Test(description = "5.3.4 - Неуспешное снятие средств со счета пользователя", priority = 8, dependsOnMethods = "testSuccessfulWithdrawlCustomerLoginInterface", retryAnalyzer = RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
-    public void testFailedWithdrawlCustomerLoginInterface() throws InterruptedException {
-        Thread.sleep(3000);
+    public void testFailedWithdrawlCustomerLoginInterface() {
         bankingPage.clickButtonBackCustomerLoginInterface()
                 .clickButtonWithdrawlCustomerLoginInterface()
                 .inputAmountWithdrawnCustomerLoginInterface(WITHDRAWN_AMOUNT_FAILED)
@@ -240,6 +240,19 @@ public class BankingTest {
         bankingPage.clickButtonTransactionsCustomerLoginInterface();
         assertFalse(bankingPage.findDigitTransactionCustomerLoginInterface(WITHDRAWN_AMOUNT_FAILED),
                 "Ошибка, неуспешная транзакция существует");
+    }
+
+    @Epic(value = "Тестирование сайта way2automation.com")
+    @Feature(value = "Интерфейсы")
+    @Story(value = "Тестирование вкладки Customer Login")
+    @Test(description = "5.3.5 - Порверка баланса пользователя", priority = 9, dependsOnMethods = "testFailedWithdrawlCustomerLoginInterface", retryAnalyzer = RetryAnalyzer.class)
+    @Severity(value = SeverityLevel.NORMAL)
+    public void testBalanceReviewCustomerLoginInterface() {
+        bankingPage.clickButtonBackCustomerLoginInterface();
+        balanceCustomerLoginInterface = Integer.parseInt(bankingPage.getStringBalanceCustomerLoginInterface().getText());
+        bankingPage.clickButtonTransactionsCustomerLoginInterface();
+        assertEquals(balanceCustomerLoginInterface, bankingPage.calculateBalanceTransactionsCustomerLoginInterface(),
+                "Баланс не совпадает с подсчетом транзакций");
     }
 
     /**
