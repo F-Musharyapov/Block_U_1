@@ -16,8 +16,7 @@ import utils.RetryAnalyzer;
 
 import java.time.Duration;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 import static utils.TestData.*;
 
 /**
@@ -43,12 +42,22 @@ public class BankingTest {
     /**
      * Переменная для поля firstName
      */
-    private String firstNameCustomer = generateFirstName();
+    private String firstNameCustomerBankManagerInterface = generateFirstName();
 
     /**
      * Переменная для поля lastName
      */
-    private String lastNameCustomer = generateLastName();
+    private String lastNameCustomerBankManagerInterface = generateLastName();
+
+    /**
+     * Переменная для поля balance
+     */
+    private int balanceCustomerLoginInterface;
+
+    /**
+     * Переменная для хранения суммы Withdrawn
+     */
+    private int sumWithdrawnCustomerLoginInterface;
 
     /**
      * Метод предусловие для инициализации
@@ -71,36 +80,36 @@ public class BankingTest {
     @Story(value = "Тестирование вкладки Sample Form")
     @Test(description = "5.1 - Тестирование формы в интерфейсе Sample Form", priority = 1, retryAnalyzer = RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
-    public void testSampleForm() {
+    public void testSampleFormInterface() {
         driver.get(config.bankingUrl());
         bankingPage
                 .clickButtonSampleForm()
-                .inputFirstNameSampleForm(generateFirstName())
-                .inputLastNameSampleForm(generateLastName())
-                .inputEmailSampleForm(getValideEmail())
-                .inputPasswordSampleForm(generatePassword())
-                .clickCheckBoxSportsSampleForm()
-                .selectGenderTypeSampleForm()
-                .inputAboutSampleForm("Самое длинное слово из предложенных хобби - " + bankingPage.findLongestLabel())
-                .clickButtonRegisterSampleForm();
+                .inputFirstNameSampleFormInterface(generateFirstName())
+                .inputLastNameSampleFormInterface(generateLastName())
+                .inputEmailSampleFormInterface(getValideEmail())
+                .inputPasswordSampleFormInterface(generatePassword())
+                .clickCheckBoxSportsSampleFormInterface()
+                .selectGenderTypeSampleFormInterface()
+                .inputAboutSampleFormInterface("Самое длинное слово из предложенных хобби - " + bankingPage.findLongestLabel())
+                .clickButtonRegisterSampleFormInterface();
 
-        assertEquals(bankingPage.getSuccessMessageSampleForm().getText(), SUCCESS_MESSAGE, "Сообщение не совпадает");
+        assertEquals(bankingPage.getSuccessMessageSampleFormInterface().getText(), SUCCESS_MESSAGE, "Сообщение не совпадает");
     }
 
     @Epic(value = "Тестирование сайта way2automation.com")
     @Feature(value = "Интерфейсы")
     @Story(value = "Тестирование вкладки Bank Manager Login")
-    @Test(description = "5.2.1 - Тестирование формы создания аккаунта", priority = 2, dependsOnMethods = "testSampleForm", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "5.2.1 - Тестирование формы создания аккаунта", priority = 2, dependsOnMethods = "testSampleFormInterface", retryAnalyzer = RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
-    public void testBankManager() {
+    public void testAddCustomerBankManagerInterface() {
         driver.get(config.bankingUrl());
         bankingPage
                 .clickButtonBankManagerLogin()
-                .clickTabAddCust()
-                .inputFirstNameAddCustomer(firstNameCustomer)
-                .inputLastNameAddCustomer(lastNameCustomer)
-                .inputPostCodeAddCustomer(generateSimplePostCode())
-                .clickButtonAddCust();
+                .clickTabAddCustBankManagerInterface()
+                .inputFirstNameAddCustomerBankManagerInterface(firstNameCustomerBankManagerInterface)
+                .inputLastNameAddCustomerBankManagerInterface(lastNameCustomerBankManagerInterface)
+                .inputPostCodeAddCustomerBankManagerInterface(generateSimplePostCode())
+                .clickButtonAddCustBankManagerInterface();
 
         assertTrue(bankingPage.getAlertText().contains(CUSTOMER_ADDED_SUCCESS_MESSAGE),
                 "Alert не содержит ожидаемого сообщения.");
@@ -111,20 +120,126 @@ public class BankingTest {
     @Epic(value = "Тестирование сайта way2automation.com")
     @Feature(value = "Интерфейсы")
     @Story(value = "Тестирование вкладки Bank Manager Login")
-    @Test(description = "5.2.2 - Тестирование открытия аккаунта и добавления currency", priority = 3, dependsOnMethods = "testAddCustomer", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "5.2.2 - Тестирование открытия аккаунта и добавления currency", priority = 3, dependsOnMethods = "testAddCustomerBankManagerInterface", retryAnalyzer = RetryAnalyzer.class)
     @Severity(value = SeverityLevel.NORMAL)
-    public void testOpenAccount() {
+    public void testOpenAccountBankManagerInterface() {
         bankingPage
-                .clickTabOpenAccount()
-                .clickUserSelect()
-                .selectCreatedCustomer(firstNameCustomer + " " + lastNameCustomer)
-                .selectCurrency(getRandomCurrency())
-                .clickButtonProcess();
+                .clickTabOpenAccountBankManagerInterface()
+                .clickUserSelectBankManagerInterface()
+                .selectCreatedCustomerBankManagerInterface(firstNameCustomerBankManagerInterface + " " + lastNameCustomerBankManagerInterface)
+                .selectCurrencyBankManagerInterface(getRandomCurrency())
+                .clickButtonProcessBankManagerInterface();
 
         assertTrue(bankingPage.getAlertText().contains(CURRENCY_SUCCESS_MESSAGE),
                 "Alert не содержит ожидаемого сообщения.");
 
         bankingPage.acceptAlert();
+    }
+
+    @Epic(value = "Тестирование сайта way2automation.com")
+    @Feature(value = "Интерфейсы")
+    @Story(value = "Тестирование вкладки Customer Login")
+    @Test(description = "5.3 - Успешная авторизация", priority = 4, dependsOnMethods = "testOpenAccountBankManagerInterface", retryAnalyzer = RetryAnalyzer.class)
+    @Severity(value = SeverityLevel.NORMAL)
+    public void testLoginInCustomerLoginInterface() {
+        driver.get(config.bankingUrl());
+        bankingPage
+                .clickButtonCustomerLogin()
+                .clickSelectCustomerLoginInterface()
+                .selectCustomerLoginInterface(firstNameCustomerBankManagerInterface + " " + lastNameCustomerBankManagerInterface)
+                .clickButtonLoginCustomerLoginInterface();
+
+        assertEquals(bankingPage.getWelcomeTextCustomerLoginInterface().getText(),
+                "Welcome " + firstNameCustomerBankManagerInterface + " " + lastNameCustomerBankManagerInterface + " !!", "Сообщение не совпадает");
+    }
+
+    @Epic(value = "Тестирование сайта way2automation.com")
+    @Feature(value = "Интерфейсы")
+    @Story(value = "Тестирование вкладки Customer Login")
+    @Test(description = "5.3.1 - Успешное пополнение счета пользователя", priority = 5, dependsOnMethods = "testLoginInCustomerLoginInterface", retryAnalyzer = RetryAnalyzer.class)
+    @Severity(value = SeverityLevel.NORMAL)
+    public void testSuccessfulDepositCustomerLoginInterface() {
+        bankingPage
+                .clickButtonDepositCustomerLoginInterface()
+                .inputAmountCustomerLoginInterface(DEPOSITE_AMOUNT_SUCCESS)
+                .clickButtonDepositSubmitCustomerLoginInterface();
+
+        assertEquals(bankingPage.getMessageDepositSuccessfulСustomerLoginInterface().getText(), DEPOSITE_SUCCESS_MESSAGE,
+                "Сообщение успеха не совпадает");
+
+        bankingPage.clickButtonLogoutCustomerLoginInterface()
+                .clickSelectCustomerLoginInterface()
+                .selectCustomerLoginInterface(firstNameCustomerBankManagerInterface + " " + lastNameCustomerBankManagerInterface)
+                .clickButtonLoginCustomerLoginInterface();
+
+        bankingPage.clickButtonTransactionsCustomerLoginInterface();
+
+        assertTrue(bankingPage.findDigitTransactionCustomerLoginInterface(DEPOSITE_AMOUNT_SUCCESS),
+                "Ошибка, успешная транзакция отсутствует");
+    }
+
+    @Epic(value = "Тестирование сайта way2automation.com")
+    @Feature(value = "Интерфейсы")
+    @Story(value = "Тестирование вкладки Customer Login")
+    @Test(description = "5.3.2 - Неуспешное пополнение счета пользователя", priority = 6, dependsOnMethods = "testSuccessfulDepositCustomerLoginInterface", retryAnalyzer = RetryAnalyzer.class)
+    @Severity(value = SeverityLevel.NORMAL)
+    public void testFailedDepositCustomerLoginInterface() {
+        bankingPage.clickButtonBackCustomerLoginInterface()
+                .clickButtonDepositCustomerLoginInterface()
+                .inputAmountCustomerLoginInterface(DEPOSITE_AMOUNT_FAILED)
+                .clickButtonDepositSubmitCustomerLoginInterface();
+
+        assertFalse(bankingPage.getMessageDepositSuccessfulСustomerLoginInterface().isDisplayed(),
+                "Сообщение об успехе не должно отображаться при неуспешном пополнении");
+        bankingPage.clickButtonTransactionsCustomerLoginInterface();
+        assertFalse(bankingPage.findDigitTransactionCustomerLoginInterface(DEPOSITE_AMOUNT_FAILED),
+                "Ошибка, неуспешная транзакция существует");
+    }
+
+    @Epic(value = "Тестирование сайта way2automation.com")
+    @Feature(value = "Интерфейсы")
+    @Story(value = "Тестирование вкладки Customer Login")
+    @Test(description = "5.3.3 - Успешное снятие средств со счета пользователя", priority = 7, dependsOnMethods = "testFailedDepositCustomerLoginInterface", retryAnalyzer = RetryAnalyzer.class)
+    @Severity(value = SeverityLevel.NORMAL)
+    public void testSuccessfulWithdrawlCustomerLoginInterface() {
+        bankingPage.clickButtonLogoutCustomerLoginInterface()
+                .clickSelectCustomerLoginInterface()
+                .selectCustomerLoginInterface(firstNameCustomerBankManagerInterface + " " + lastNameCustomerBankManagerInterface)
+                .clickButtonLoginCustomerLoginInterface();
+
+        balanceCustomerLoginInterface = Integer.parseInt(bankingPage.getStringBalanceCustomerLoginInterface().getText());
+        sumWithdrawnCustomerLoginInterface = getRandomNumberAmountWithdrawn(balanceCustomerLoginInterface);
+        bankingPage.clickButtonWithdrawlCustomerLoginInterface()
+                .inputAmountWithdrawnCustomerLoginInterface(String.valueOf(sumWithdrawnCustomerLoginInterface))
+                .clickButtonWithdrawlSubmitCustomerLoginInterface();
+
+        assertEquals(bankingPage.getMessageWithdrawSuccessfulСustomerLoginInterface().getText(), WITHDRAWN_SUCCESS_MESSAGE,
+                "Сообщение успеха не совпадает");
+        bankingPage.clickButtonLogoutCustomerLoginInterface()
+                .clickSelectCustomerLoginInterface()
+                .selectCustomerLoginInterface(firstNameCustomerBankManagerInterface + " " + lastNameCustomerBankManagerInterface)
+                .clickButtonLoginCustomerLoginInterface()
+                .clickButtonTransactionsCustomerLoginInterface();
+        assertTrue(bankingPage.findDigitTransactionCustomerLoginInterface(String.valueOf(sumWithdrawnCustomerLoginInterface)),
+                "Ошибка, успешная транзакция отсутствует");
+    }
+
+    @Epic(value = "Тестирование сайта way2automation.com")
+    @Feature(value = "Интерфейсы")
+    @Story(value = "Тестирование вкладки Customer Login")
+    @Test(description = "5.3.4 - Неуспешное снятие средств со счета пользователя", priority = 8, dependsOnMethods = "testSuccessfulWithdrawlCustomerLoginInterface", retryAnalyzer = RetryAnalyzer.class)
+    @Severity(value = SeverityLevel.NORMAL)
+    public void testFailedWithdrawlCustomerLoginInterface() throws InterruptedException {
+        Thread.sleep(3000);
+        bankingPage.clickButtonBackCustomerLoginInterface()
+                .clickButtonWithdrawlCustomerLoginInterface()
+                .inputAmountWithdrawnCustomerLoginInterface(WITHDRAWN_AMOUNT_FAILED)
+                .clickButtonWithdrawlSubmitCustomerLoginInterface();
+        assertEquals(bankingPage.getMessageWithdrawSuccessfulСustomerLoginInterface().getText(), WITHDRAWN_FAILED_MESSAGE,
+                "Сообщение провального снятия средств не совпадает");
+        bankingPage.clickButtonTransactionsCustomerLoginInterface();
+        assertFalse(bankingPage.findDigitTransactionCustomerLoginInterface(WITHDRAWN_AMOUNT_FAILED),
+                "Ошибка, неуспешная транзакция существует");
     }
 
     /**

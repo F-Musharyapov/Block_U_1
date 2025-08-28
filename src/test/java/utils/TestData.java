@@ -86,6 +86,36 @@ public class TestData {
     public static final String POST_CODE_CUSTOMER = "[0-9]{6}";
 
     /**
+     * Константа всплывающего текста вкладки Deposit интерфейса Customer Login теста BankingTest
+     */
+    public static final String DEPOSITE_SUCCESS_MESSAGE = "Deposit Successful";
+
+    /**
+     * Константа суммы депозита для успешного пополнения счета пользователя интерфейса Customer Login теста BankingTest
+     */
+    public static final String DEPOSITE_AMOUNT_SUCCESS = "100321";
+
+    /**
+     * Константа суммы депозита для неуспешного пополнения счета пользователя интерфейса Customer Login теста BankingTest
+     */
+    public static final String DEPOSITE_AMOUNT_FAILED = "0";
+
+    /**
+     * Константа всплывающего текста успеха вкладки Withdrawl интерфейса Customer Login теста BankingTest
+     */
+    public static final String WITHDRAWN_SUCCESS_MESSAGE = "Transaction successful";
+
+    /**
+     * Константа всплывающего текста неудачи вкладки Withdrawl интерфейса Customer Login теста BankingTest
+     */
+    public static final String WITHDRAWN_FAILED_MESSAGE = "Transaction Failed. You can not withdraw amount more than the balance.";
+
+    /**
+     * Константа суммы депозита для неуспешного снятия средств со счета пользователя вкладки Withdrawl интерфейса Customer Login теста BankingTest
+     */
+    public static final String WITHDRAWN_AMOUNT_FAILED = "1000000";
+
+    /**
      * Идентификаторы
      */
     public static final String EMAIL_USER = "[a-z]{10}\\@[a-z]{5}\\.[a-z]{2}";
@@ -172,6 +202,11 @@ public class TestData {
         return CURRENCY_SELECT[random.nextInt(CURRENCY_SELECT.length)];
     }
 
+    public static int getRandomNumberAmountWithdrawn(int n) {
+        Random random = new Random();
+        return random.nextInt(n) + 1;
+    }
+
     /**
      * Метод DataProvider для подстановки данных
      *
@@ -196,16 +231,22 @@ public class TestData {
 
     /**
      * Метод для подстановки названий браузеров
+     *
      * @param enumBrowsers принимает константу
      * @return Undefined
      */
-    String getEnumBrowsers(EnumBrowsers enumBrowsers){
-        switch(enumBrowsers){
-            case FIREFOX: return "Firefox";
-            case CHROME: return "Chrome";
-            case EDGE: return "Edge";
-            case INTERNET_EXPLORER: return "InternetExplorer";
-            default: return "Undefined";
+    String getEnumBrowsers(EnumBrowsers enumBrowsers) {
+        switch (enumBrowsers) {
+            case FIREFOX:
+                return "Firefox";
+            case CHROME:
+                return "Chrome";
+            case EDGE:
+                return "Edge";
+            case INTERNET_EXPLORER:
+                return "InternetExplorer";
+            default:
+                return "Undefined";
         }
     }
 }

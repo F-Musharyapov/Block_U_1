@@ -39,68 +39,68 @@ public class BankingPage extends BasePage {
      * Локатор для поля First Name вкладки SampleForm
      */
     @FindBy(id = "firstName")
-    private WebElement fieldFirstNameSampleForm;
+    private WebElement fieldFirstNameSampleFormInterface;
 
     /**
      * Локатор для поля Last Name SampleForm
      */
     @FindBy(id = "lastName")
-    private WebElement fieldLastNameSampleForm;
+    private WebElement fieldLastNameSampleFormInterface;
 
     /**
      * Локатор для поля Email SampleForm
      */
     @FindBy(id = "email")
-    private WebElement fieldEmailSampleForm;
+    private WebElement fieldEmailSampleFormInterface;
 
     /**
      * Локатор для поля Password SampleForm
      */
     @FindBy(id = "password")
-    private WebElement fieldPasswordSampleForm;
+    private WebElement fieldPasswordSampleFormInterface;
 
     /**
      * Локатор для чекбокса Sports SampleForm
      */
     @FindBy(css = "input[value='Sports']")
-    private WebElement checkBoxSportsSampleForm;
+    private WebElement checkBoxSportsSampleFormInterface;
 
     /**
      * Локатор для поля Gender SampleForm
      */
     @FindBy(id = "gender")
-    private WebElement selectGenderSampleForm;
+    private WebElement selectGenderSampleFormInterface;
 
     /**
      * Локатор для поля Gender SampleForm
      */
     @FindBy(css = "#gender option[value='male']")
-    private WebElement selectGenderMaleSampleForm;
+    private WebElement selectGenderMaleSampleFormInterface;
 
     /**
      * Локатор для поля About Yourself SampleForm
      */
     @FindBy(id = "about")
-    private WebElement fieldAboutSampleForm;
+    private WebElement fieldAboutSampleFormInterface;
 
     /**
      * Локатор для кнопки Register SampleForm
      */
     @FindBy(css = "button[type='submit']")
-    private WebElement buttonRegisterSampleForm;
+    private WebElement buttonRegisterSampleFormInterface;
 
     /**
      * Локатор для списка checkboxGroup SampleForm
      */
     @FindBy(css = "div.checkbox-group")
-    private WebElement checkboxGroupSampleForm;
+    private WebElement checkboxGroupSampleFormInterface;
 
     /**
      * Локатор для successMessage SampleForm
      */
     @Getter
     @FindBy(css = "#successMessage[style*='display: block']")
-    private WebElement successMessageSampleForm;
+    private WebElement successMessageSampleFormInterface;
 
     /**
      * Локатор для кнопки Bank Manager Login
@@ -112,55 +112,162 @@ public class BankingPage extends BasePage {
      * Локатор для вкладки AddCustomer для интерфейса Bank Manager
      */
     @FindBy(css = "button.btn.tab[ng-click='addCust()']")
-    private WebElement tabAddCustBankManager;
+    private WebElement tabAddCustBankManagerInterface;
 
     /**
      * Локатор для поля First Name вкладки AddCustomer для интерфейса Bank Manager
      */
     @FindBy(css = "input.form-control[ng-model='fName']")
-    private WebElement fieldFirstNameAddCustomerBankManager;
+    private WebElement fieldFirstNameAddCustomerBankManagerInterface;
 
     /**
      * Локатор для поля Last Name вкладки AddCustomer для интерфейса Bank Manager
      */
     @FindBy(css = "input.form-control[ng-model='lName']")
-    private WebElement fieldLastNameAddCustomerBankManager;
+    private WebElement fieldLastNameAddCustomerBankManagerInterface;
 
     /**
      * Локатор для поля Post Code вкладки AddCustomer для интерфейса Bank Manager
      */
     @FindBy(css = "input.form-control[ng-model='postCd']")
-    private WebElement fieldPostCodeAddCustomerBankManager;
+    private WebElement fieldPostCodeAddCustomerBankManagerInterface;
 
     /**
      * Локатор для кнопки вкладки AddCustomer для интерфейса Bank Manager
      */
     @FindBy(css = "button.btn.btn-default[type='submit']")
-    private WebElement buttonAddCustBankManager;
+    private WebElement buttonAddCustBankManagerInterface;
 
     /**
      * Локатор для таба Open Account интерфейса Bank Manager
      */
     @FindBy(css = "button.btn.tab[ng-click='openAccount()']")
-    private WebElement tabOpenAccountBankManager;
+    private WebElement tabOpenAccountBankManagerInterface;
 
     /**
      * Локатор для селекта выбора userSelect таба Open Account интерфейса Bank Manager
      */
     @FindBy(css = "select.form-control[name='userSelect']")
-    private WebElement userSelectBankManager;
+    private WebElement userSelectBankManagerInterface;
 
     /**
      * Локатор для селекта выбора currencySelect таба Open Account интерфейса Bank Manager
      */
     @FindBy(css = "select.form-control[name='currency']")
-    private WebElement currencySelectBankManager;
+    private WebElement currencySelectBankManagerInterface;
 
     /**
      * Локатор для кнопки Process таба Open Account интерфейса Bank Manager
      */
     @FindBy(xpath = "//button[@type='submit' and text()='Process']")
-    private WebElement buttonProcessBankManager;
+    private WebElement buttonProcessBankManagerInterface;
+
+    /**
+     * Локатор для кнопки Customer Login
+     */
+    @FindBy(css = "button.btn-primary[ng-click='customer()']")
+    private WebElement buttonCustomerLogin;
+
+    /**
+     * Локатор для селекта выбора Your Name интерфейса Customer Login
+     */
+    @FindBy(css = "select.form-control[name='userSelect']")
+    private WebElement selectNameCustomerLoginInterface;
+
+    /**
+     * Локатор для кнопки Login интерфейса Customer Login
+     */
+    @FindBy(xpath = "//button[text()='Login']")
+    private WebElement buttonLoginCustomerLoginInterface;
+
+    /**
+     * Локатор для текста welcome интерфейса Customer Login
+     */
+    @Getter
+    @FindBy(xpath = "//strong[contains(text(), 'Welcome')]")
+    private WebElement welcomeTextCustomerLoginInterface;
+
+    /**
+     * Локатор для кнопки Transactions интерфейса Customer Login
+     */
+    @FindBy(xpath = "//button[@ng-click='transactions()']")
+    private WebElement buttonTransactionsCustomerLoginInterface;
+
+    /**
+     * Локатор для кнопки Deposit интерфейса Customer Login
+     */
+    @FindBy(xpath = "//button[@ng-click='deposit()']")
+    private WebElement buttonDepositCustomerLoginInterface;
+
+    /**
+     * Локатор для кнопки Withdrawl интерфейса Customer Login
+     */
+    @FindBy(xpath = "//button[@ng-click='withdrawl()']")
+    private WebElement buttonWithdrawlCustomerLoginInterface;
+
+    /**
+     * Локатор для поля ввода Amount кладки Deposit интерфейса Customer Login
+     */
+    @FindBy(css = "input.form-control[ng-model='amount']")
+    private WebElement fieldAmountDepositCustomerLoginInterface;
+
+    /**
+     * Локатор для кнопки Deposit Submit интерфейса Customer Login
+     */
+    @FindBy(css = "button[type='submit'].btn.btn-default")
+    private WebElement buttonDepositSubmitCustomerLoginInterface;
+
+    /**
+     * Локатор для сообщения успеха Deposit Successful вкладки Deposit интерфейса Customer Login
+     */
+    @Getter
+    @FindBy(css = "span[ng-show='message']")
+    private WebElement messageDepositSuccessfulСustomerLoginInterface;
+
+    /**
+     * Локатор таблицы вкладки Transactions интерфейса Customer Login
+     */
+    @FindBy(css = "tbody")
+    private WebElement tableTransactionsСustomerLoginInterface;
+
+    /**
+     * Локатор для кнопки Back вкладки Transactions интерфейса Customer Login
+     */
+    @FindBy(css = "button[ng-click='back()'].btn")
+    private WebElement buttonBackTransactionsCustomerLoginInterface;
+
+    /**
+     * Локатор для строки Balance интерфейса Customer Login
+     */
+    @Getter
+    @FindBy(xpath = "//div[@class='center']/strong[2]")
+    private WebElement stringBalanceCustomerLoginInterface;
+
+    /**
+     * Локатор для поля ввода Amount вкладки Withdrawl интерфейса Customer Login
+     */
+    @FindBy(css = "input.form-control[ng-model='amount']")
+    private WebElement fieldAmountWithdrawCustomerLoginInterface;
+
+    /**
+     * Локатор для кнопки Withdraw submit вкладки Withdrawl интерфейса Customer Login
+     */
+    @FindBy(css = "button[type='submit'].btn.btn-default")
+    private WebElement buttonWithdrawSubmitCustomerLoginInterface;
+
+    /**
+     * Локатор для сообщения успеха Withdrawl Successful вкладки Withdraw интерфейса Customer Login
+     */
+    @Getter
+    @FindBy(css = "span[ng-show='message']")
+    private WebElement messageWithdrawSuccessfulСustomerLoginInterface;
+
+    /**
+     * Локатор для кнопки Logout интерфейса Customer Login
+     */
+    @Getter
+    @FindBy(css = "button[ng-click='byebye()'].btn.logout")
+    private WebElement buttonLogoutCustomerLoginInterface;
 
     /**
      * Метод для клика по кнопке SampleForm
@@ -181,8 +288,8 @@ public class BankingPage extends BasePage {
      * @return текущая страница
      */
     @Step("Ввод данных в поле ввода First Name SampleForm")
-    public BankingPage inputFirstNameSampleForm(String input) {
-        fieldFirstNameSampleForm.sendKeys(input);
+    public BankingPage inputFirstNameSampleFormInterface(String input) {
+        fieldFirstNameSampleFormInterface.sendKeys(input);
         return this;
     }
 
@@ -193,8 +300,8 @@ public class BankingPage extends BasePage {
      * @return текущая страница
      */
     @Step("Ввод данных в поле ввода Last Name SampleForm")
-    public BankingPage inputLastNameSampleForm(String input) {
-        fieldLastNameSampleForm.sendKeys(input);
+    public BankingPage inputLastNameSampleFormInterface(String input) {
+        fieldLastNameSampleFormInterface.sendKeys(input);
         return this;
     }
 
@@ -205,8 +312,8 @@ public class BankingPage extends BasePage {
      * @return текущая страница
      */
     @Step("Ввод данных в поле ввода Email SampleForm")
-    public BankingPage inputEmailSampleForm(String input) {
-        fieldEmailSampleForm.sendKeys(input);
+    public BankingPage inputEmailSampleFormInterface(String input) {
+        fieldEmailSampleFormInterface.sendKeys(input);
         return this;
     }
 
@@ -217,8 +324,8 @@ public class BankingPage extends BasePage {
      * @return текущая страница
      */
     @Step("Ввод данных в поле ввода Password SampleForm")
-    public BankingPage inputPasswordSampleForm(String input) {
-        fieldPasswordSampleForm.sendKeys(input);
+    public BankingPage inputPasswordSampleFormInterface(String input) {
+        fieldPasswordSampleFormInterface.sendKeys(input);
         return this;
     }
 
@@ -228,8 +335,8 @@ public class BankingPage extends BasePage {
      * @return текущая страница
      */
     @Step("Клик по чекбоксу Sports SampleForm")
-    public BankingPage clickCheckBoxSportsSampleForm() {
-        checkBoxSportsSampleForm.click();
+    public BankingPage clickCheckBoxSportsSampleFormInterface() {
+        checkBoxSportsSampleFormInterface.click();
         return this;
     }
 
@@ -239,10 +346,10 @@ public class BankingPage extends BasePage {
      * @return текущая страница
      */
     @Step("Клик в поле Gender и выбора пункта из выпадающего списка SampleForm")
-    public BankingPage selectGenderTypeSampleForm() {
-        selectGenderSampleForm.click();
-        waitUntilVisible(driver, selectGenderMaleSampleForm);
-        selectGenderMaleSampleForm.click();
+    public BankingPage selectGenderTypeSampleFormInterface() {
+        selectGenderSampleFormInterface.click();
+        waitUntilVisible(driver, selectGenderMaleSampleFormInterface);
+        selectGenderMaleSampleFormInterface.click();
         return this;
     }
 
@@ -250,7 +357,7 @@ public class BankingPage extends BasePage {
      * Метод получения списка label SampleForm
      */
     public List<String> getAllCheckboxLabels() {
-        List<WebElement> labels = checkboxGroupSampleForm.findElements(By.tagName("label"));
+        List<WebElement> labels = checkboxGroupSampleFormInterface.findElements(By.tagName("label"));
         List<String> result = new ArrayList<>();
 
         for (WebElement label : labels) {
@@ -289,8 +396,8 @@ public class BankingPage extends BasePage {
      * @return текущая страница
      */
     @Step("Ввод данных в поле ввода About SampleForm")
-    public BankingPage inputAboutSampleForm(String input) {
-        fieldAboutSampleForm.sendKeys(input);
+    public BankingPage inputAboutSampleFormInterface(String input) {
+        fieldAboutSampleFormInterface.sendKeys(input);
         return this;
     }
 
@@ -300,8 +407,8 @@ public class BankingPage extends BasePage {
      * @return текущая страница
      */
     @Step("Клик по кнопке Register SampleForm")
-    public BankingPage clickButtonRegisterSampleForm() {
-        buttonRegisterSampleForm.click();
+    public BankingPage clickButtonRegisterSampleFormInterface() {
+        buttonRegisterSampleFormInterface.click();
         return this;
     }
 
@@ -323,9 +430,9 @@ public class BankingPage extends BasePage {
      * @return текущая страница
      */
     @Step("Клик по табу Add Customer интерфейса Bank Manager")
-    public BankingPage clickTabAddCust() {
-        waitUntilVisible(driver, tabAddCustBankManager);
-        tabAddCustBankManager.click();
+    public BankingPage clickTabAddCustBankManagerInterface() {
+        waitUntilVisible(driver, tabAddCustBankManagerInterface);
+        tabAddCustBankManagerInterface.click();
         return this;
     }
 
@@ -336,9 +443,9 @@ public class BankingPage extends BasePage {
      * @return текущая страница
      */
     @Step("Ввод данных в поле ввода First Name вкладки AddCustomer интерфейса Bank Manager")
-    public BankingPage inputFirstNameAddCustomer(String input) {
-        waitUntilVisible(driver, fieldFirstNameAddCustomerBankManager);
-        fieldFirstNameAddCustomerBankManager.sendKeys(input);
+    public BankingPage inputFirstNameAddCustomerBankManagerInterface(String input) {
+        waitUntilVisible(driver, fieldFirstNameAddCustomerBankManagerInterface);
+        fieldFirstNameAddCustomerBankManagerInterface.sendKeys(input);
         return this;
     }
 
@@ -349,9 +456,9 @@ public class BankingPage extends BasePage {
      * @return текущая страница
      */
     @Step("Ввод данных в поле ввода Last Name вкладки AddCustomer интерфейса Bank Manager")
-    public BankingPage inputLastNameAddCustomer(String input) {
-        waitUntilVisible(driver, fieldLastNameAddCustomerBankManager);
-        fieldLastNameAddCustomerBankManager.sendKeys(input);
+    public BankingPage inputLastNameAddCustomerBankManagerInterface(String input) {
+        waitUntilVisible(driver, fieldLastNameAddCustomerBankManagerInterface);
+        fieldLastNameAddCustomerBankManagerInterface.sendKeys(input);
         return this;
     }
 
@@ -362,9 +469,9 @@ public class BankingPage extends BasePage {
      * @return текущая страница
      */
     @Step("Ввод данных в поле ввода Post Code вкладки AddCustomer интерфейса Bank Manager")
-    public BankingPage inputPostCodeAddCustomer(String input) {
-        waitUntilVisible(driver, fieldPostCodeAddCustomerBankManager);
-        fieldPostCodeAddCustomerBankManager.sendKeys(input);
+    public BankingPage inputPostCodeAddCustomerBankManagerInterface(String input) {
+        waitUntilVisible(driver, fieldPostCodeAddCustomerBankManagerInterface);
+        fieldPostCodeAddCustomerBankManagerInterface.sendKeys(input);
         return this;
     }
 
@@ -374,9 +481,9 @@ public class BankingPage extends BasePage {
      * @return текущая страница
      */
     @Step("Клик по кнопке Add Customer интерфейса Bank Manager")
-    public BankingPage clickButtonAddCust() {
-        waitUntilVisible(driver, buttonAddCustBankManager);
-        buttonAddCustBankManager.click();
+    public BankingPage clickButtonAddCustBankManagerInterface() {
+        waitUntilVisible(driver, buttonAddCustBankManagerInterface);
+        buttonAddCustBankManagerInterface.click();
         return this;
     }
 
@@ -410,9 +517,9 @@ public class BankingPage extends BasePage {
      * @return текущая страница
      */
     @Step("Клик по табу Open Account интерфейса Bank Manager")
-    public BankingPage clickTabOpenAccount() {
-        waitUntilVisible(driver, tabAddCustBankManager);
-        tabOpenAccountBankManager.click();
+    public BankingPage clickTabOpenAccountBankManagerInterface() {
+        waitUntilVisible(driver, tabAddCustBankManagerInterface);
+        tabOpenAccountBankManagerInterface.click();
         return this;
     }
 
@@ -422,9 +529,9 @@ public class BankingPage extends BasePage {
      * @return текущая страница
      */
     @Step("Клик по селекту выбора пользователя вкладки Open Account интерфейса Bank Manager")
-    public BankingPage clickUserSelect() {
-        waitUntilVisible(driver, userSelectBankManager);
-        userSelectBankManager.click();
+    public BankingPage clickUserSelectBankManagerInterface() {
+        waitUntilVisible(driver, userSelectBankManagerInterface);
+        userSelectBankManagerInterface.click();
         return this;
     }
 
@@ -435,11 +542,11 @@ public class BankingPage extends BasePage {
      * @return
      */
     @Step("Клик по customer вкладки Open Account интерфейса Bank Manager")
-    public BankingPage selectCreatedCustomer(String str) {
-        waitUntilVisible(driver, userSelectBankManager);
-        Select select = new Select(userSelectBankManager);
+    public BankingPage selectCreatedCustomerBankManagerInterface(String str) {
+        waitUntilVisible(driver, userSelectBankManagerInterface);
+        Select select = new Select(userSelectBankManagerInterface);
         select.selectByVisibleText(str);
-        userSelectBankManager.click();
+        userSelectBankManagerInterface.click();
         return this;
     }
 
@@ -449,9 +556,9 @@ public class BankingPage extends BasePage {
      * @return
      */
     @Step("Клик по полю селекта currency вкладки Open Account интерфейса Bank Manager")
-    public BankingPage clickCurrencySelect() {
-        waitUntilVisible(driver, currencySelectBankManager);
-        currencySelectBankManager.click();
+    public BankingPage clickCurrencySelectBankManagerInterface() {
+        waitUntilVisible(driver, currencySelectBankManagerInterface);
+        currencySelectBankManagerInterface.click();
         return this;
     }
 
@@ -462,11 +569,11 @@ public class BankingPage extends BasePage {
      * @return
      */
     @Step("Выбор currency в select вкладки Open Account интерфейса Bank Manager")
-    public BankingPage selectCurrency(String str) {
-        waitUntilVisible(driver, currencySelectBankManager);
-        Select select = new Select(currencySelectBankManager);
+    public BankingPage selectCurrencyBankManagerInterface(String str) {
+        waitUntilVisible(driver, currencySelectBankManagerInterface);
+        Select select = new Select(currencySelectBankManagerInterface);
         select.selectByVisibleText(str);
-        currencySelectBankManager.click();
+        currencySelectBankManagerInterface.click();
         return this;
     }
 
@@ -476,9 +583,186 @@ public class BankingPage extends BasePage {
      * @return текущая страница
      */
     @Step("Клик по кнопке Process вкладки Open Account интерфейса Bank Manager")
-    public BankingPage clickButtonProcess() {
-        waitUntilVisible(driver, buttonProcessBankManager);
-        buttonProcessBankManager.click();
+    public BankingPage clickButtonProcessBankManagerInterface() {
+        waitUntilVisible(driver, buttonProcessBankManagerInterface);
+        buttonProcessBankManagerInterface.click();
+        return this;
+    }
+
+    /**
+     * Метод для клика по кнопке Customer Login
+     *
+     * @return текущая страница
+     */
+    @Step("Клик по кнопке Customer Login")
+    public BankingPage clickButtonCustomerLogin() {
+        waitUntilVisible(driver, buttonCustomerLogin);
+        buttonCustomerLogin.click();
+        return this;
+    }
+
+    /**
+     * Метод для клика по селекту выбора пользователя интерфейса Customer Login
+     *
+     * @return текущая страница
+     */
+    @Step("Клик по селекту выбора пользователя интерфейса Customer Login")
+    public BankingPage clickSelectCustomerLoginInterface() {
+        waitUntilVisible(driver, selectNameCustomerLoginInterface);
+        selectNameCustomerLoginInterface.click();
+        return this;
+    }
+
+    /**
+     * Метод выбора name списке пользователей интерфейса Customer Login
+     *
+     * @param str название нужного customer
+     * @return
+     */
+    @Step("Выбор name списке пользователей интерфейса Customer Login")
+    public BankingPage selectCustomerLoginInterface(String str) {
+        waitUntilVisible(driver, selectNameCustomerLoginInterface);
+        Select select = new Select(selectNameCustomerLoginInterface);
+        select.selectByVisibleText(str);
+        selectNameCustomerLoginInterface.click();
+        return this;
+    }
+
+    /**
+     * Метод для клика по кнопке Login интерфейса Customer Login
+     *
+     * @return текущая страница
+     */
+    @Step("Клик по кнопке Login интерфейса Customer Login")
+    public BankingPage clickButtonLoginCustomerLoginInterface() {
+        waitUntilVisible(driver, buttonLoginCustomerLoginInterface);
+        buttonLoginCustomerLoginInterface.click();
+        return this;
+    }
+
+    /**
+     * Метод для клика по кнопке Transactions интерфейса Customer Login
+     *
+     * @return текущая страница
+     */
+    @Step("Клик по кнопке Transactions интерфейса Customer Login")
+    public BankingPage clickButtonTransactionsCustomerLoginInterface() {
+        waitUntilVisible(driver, buttonTransactionsCustomerLoginInterface);
+        buttonTransactionsCustomerLoginInterface.click();
+        return this;
+    }
+
+    /**
+     * Метод для клика по кнопке Deposit интерфейса Customer Login
+     *
+     * @return текущая страница
+     */
+    @Step("Клик по кнопке Deposit интерфейса Customer Login")
+    public BankingPage clickButtonDepositCustomerLoginInterface() {
+        waitUntilVisible(driver, buttonDepositCustomerLoginInterface);
+        buttonDepositCustomerLoginInterface.click();
+        return this;
+    }
+
+    /**
+     * Метод для клика по кнопке Withdrawl интерфейса Customer Login
+     *
+     * @return текущая страница
+     */
+    @Step("Клик по кнопке Withdrawl интерфейса Customer Login")
+    public BankingPage clickButtonWithdrawlCustomerLoginInterface() {
+        waitUntilVisible(driver, buttonWithdrawlCustomerLoginInterface);
+        buttonWithdrawlCustomerLoginInterface.click();
+        return this;
+    }
+
+    /**
+     * Метод ввода текста в поле Amount вкладки Deposit интерфейса Customer Login
+     *
+     * @param input текст ввода
+     * @return текущая страница
+     */
+    @Step("Ввод данных в поле ввода Amount вкладки Deposit интерфейса Customer Login")
+    public BankingPage inputAmountCustomerLoginInterface(String input) {
+        waitUntilVisible(driver, fieldAmountDepositCustomerLoginInterface);
+        fieldAmountDepositCustomerLoginInterface.sendKeys(input);
+        return this;
+    }
+
+    /**
+     * Метод для клика по кнопке Deposit Submit вкладки Deposit интерфейса Customer Login
+     *
+     * @return текущая страница
+     */
+    @Step("Клик по кнопке Deposit Submit вкладки Deposit интерфейса Customer Login")
+    public BankingPage clickButtonDepositSubmitCustomerLoginInterface() {
+        waitUntilVisible(driver, buttonDepositSubmitCustomerLoginInterface);
+        buttonDepositSubmitCustomerLoginInterface.click();
+        return this;
+    }
+
+    /**
+     * Метод цикл для проверки наличия транзакции во вкладке Transactions интерфейса Customer Login
+     *
+     * @return результат поиска
+     * @str число для поиска
+     */
+    public boolean findDigitTransactionCustomerLoginInterface(String str) {
+        List<WebElement> amountCells = tableTransactionsСustomerLoginInterface.findElements(By.cssSelector("tr td:nth-child(2)"));
+        for (WebElement cell : amountCells) {
+            if (cell.getText().trim().equals(str)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Метод для клика по кнопке Back вкладки Transactions интерфейса Customer Login
+     *
+     * @return текущая страница
+     */
+    @Step("Клик по кнопке Back вкладки Transactions интерфейса Customer Login")
+    public BankingPage clickButtonBackCustomerLoginInterface() {
+        waitUntilVisible(driver, buttonBackTransactionsCustomerLoginInterface);
+        buttonBackTransactionsCustomerLoginInterface.click();
+        return this;
+    }
+
+    /**
+     * Метод ввода текста в поле Amount вкладки Withdrawl интерфейса Customer Login
+     *
+     * @param input текст ввода
+     * @return текущая страница
+     */
+    @Step("Ввод данных в поле ввода Amount вкладки Withdrawn интерфейса Customer Login")
+    public BankingPage inputAmountWithdrawnCustomerLoginInterface(String input) {
+        waitUntilVisible(driver, fieldAmountWithdrawCustomerLoginInterface);
+        fieldAmountWithdrawCustomerLoginInterface.sendKeys(input);
+        return this;
+    }
+
+    /**
+     * Метод для клика по кнопке Withdraw Submit вкладки Withdrawl интерфейса Customer Login
+     *
+     * @return текущая страница
+     */
+    @Step("Клик по кнопке Withdraw Submit вкладки Withdrawn интерфейса Customer Login")
+    public BankingPage clickButtonWithdrawlSubmitCustomerLoginInterface() {
+        waitUntilVisible(driver, buttonWithdrawSubmitCustomerLoginInterface);
+        buttonWithdrawSubmitCustomerLoginInterface.click();
+        return this;
+    }
+
+    /**
+     * Метод для клика по кнопке Logout интерфейса Customer Login
+     *
+     * @return текущая страница
+     */
+    @Step("Клик по кнопке Logout интерфейса Customer Login")
+    public BankingPage clickButtonLogoutCustomerLoginInterface() {
+        waitUntilVisible(driver, buttonLogoutCustomerLoginInterface);
+        buttonLogoutCustomerLoginInterface.click();
         return this;
     }
 }
