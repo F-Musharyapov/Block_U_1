@@ -17,7 +17,6 @@ import utils.RetryAnalyzer;
 import java.time.Duration;
 
 import static org.testng.Assert.*;
-import static org.testng.Assert.assertFalse;
 import static utils.TestData.*;
 
 /**
@@ -56,9 +55,14 @@ public class BankingTest {
     private int balanceCustomerLoginInterface;
 
     /**
-     * Переменная для хранения суммы Withdrawn
+     * Переменная для суммы Withdrawn
      */
     private int sumWithdrawnCustomerLoginInterface;
+
+    /**
+     * Переменная для количества транзакций
+     */
+    private int сountTransactionsCustomerLoginInterface;
 
     /**
      * Метод предусловие для инициализации
@@ -253,6 +257,45 @@ public class BankingTest {
         bankingPage.clickButtonTransactionsCustomerLoginInterface();
         assertEquals(balanceCustomerLoginInterface, bankingPage.calculateBalanceTransactionsCustomerLoginInterface(),
                 "Баланс не совпадает с подсчетом транзакций");
+    }
+
+    @Epic(value = "Тестирование сайта way2automation.com")
+    @Feature(value = "Интерфейсы")
+    @Story(value = "Тестирование вкладки Customer Login")
+    @Test(description = "5.3.6 - Снятие оставшихся средств c баланса пользователя", priority = 10, dependsOnMethods = "testBalanceReviewCustomerLoginInterface", retryAnalyzer = RetryAnalyzer.class)
+    @Severity(value = SeverityLevel.NORMAL)
+    public void testWithdrawFullCustomerLoginInterface() {
+        bankingPage.clickButtonBackCustomerLoginInterface();
+        balanceCustomerLoginInterface = Integer.parseInt(bankingPage.getStringBalanceCustomerLoginInterface().getText());
+        bankingPage.clickButtonWithdrawlCustomerLoginInterface()
+                .inputAmountWithdrawnCustomerLoginInterface(String.valueOf(balanceCustomerLoginInterface))
+                .clickButtonWithdrawlSubmitCustomerLoginInterface();
+
+        assertEquals(bankingPage.getMessageWithdrawSuccessfulСustomerLoginInterface().getText(), WITHDRAWN_SUCCESS_MESSAGE,
+                "Сообщение успеха не совпадает");
+        assertEquals(bankingPage.getStringBalanceCustomerLoginInterface().getText(), BALANCE_EMPTY,
+                "Баланс не совпадает");
+    }
+
+    @Epic(value = "Тестирование сайта way2automation.com")
+    @Feature(value = "Интерфейсы")
+    @Story(value = "Тестирование вкладки Customer Login")
+    @Test(description = "5.3.7 - Очистка истории транзакций пользователя", priority = 11, dependsOnMethods = "testWithdrawFullCustomerLoginInterface", retryAnalyzer = RetryAnalyzer.class)
+    @Severity(value = SeverityLevel.NORMAL)
+    public void testCleanHistoryTransactionsCustomerLoginInterface() {
+        bankingPage.clickButtonTransactionsCustomerLoginInterface();
+
+        assertNotEquals(TRANSACTIONS_EMPTY, bankingPage.calculateCountTransactionsCustomerLoginInterface(),
+                "В системе должны присутствовать транзакции");
+
+        bankingPage.clickButtonResetTransactionsCustomerLoginInterface();
+
+        assertEquals(bankingPage.calculateCountTransactionsCustomerLoginInterface(), TRANSACTIONS_EMPTY, "Транзакции не очистились");
+
+        bankingPage.clickButtonBackCustomerLoginInterface();
+
+        assertEquals(bankingPage.getStringBalanceCustomerLoginInterface().getText(), BALANCE_EMPTY,
+                "Баланс не совпадает");
     }
 
     /**

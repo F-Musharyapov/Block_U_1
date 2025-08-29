@@ -231,6 +231,13 @@ public class BankingPage extends BasePage {
     private WebElement tableTransactionsСustomerLoginInterface;
 
     /**
+     * Локатор для строк таблицы вкладки Transactions интерфейса Customer Login
+     */
+    @Getter
+    @FindBy(css = "tbody tr")
+    private WebElement tableRowsTransactionsСustomerLoginInterface;
+
+    /**
      * Локатор для кнопки Back вкладки Transactions интерфейса Customer Login
      */
     @FindBy(css = "button[ng-click='back()'].btn")
@@ -268,6 +275,12 @@ public class BankingPage extends BasePage {
     @Getter
     @FindBy(css = "button[ng-click='byebye()'].btn.logout")
     private WebElement buttonLogoutCustomerLoginInterface;
+
+    /**
+     * Локатор для кнопки Reset вкладки Transactions интерфейса Customer Login
+     */
+    @FindBy(css = "button[ng-click='reset()'].btn")
+    private WebElement buttonResetTransactionsCustomerLoginInterface;
 
     /**
      * Метод для клика по кнопке SampleForm
@@ -768,9 +781,11 @@ public class BankingPage extends BasePage {
 
     /**
      * Метод для извлечения транзакций из строк таблицы вкладки Transactions интерфейса Customer Login
+     *
      * @return подсчитанный баланс пользователя
      */
     public int calculateBalanceTransactionsCustomerLoginInterface() {
+        waitUntilVisible(driver, tableTransactionsСustomerLoginInterface);
         List<WebElement> rows = tableTransactionsСustomerLoginInterface.findElements(By.cssSelector("tr"));
 
         int totalCredit = 0;
@@ -782,12 +797,37 @@ public class BankingPage extends BasePage {
             int amount = Integer.parseInt(row.findElement(By.cssSelector("td:nth-child(2)")).getText());
             String type = row.findElement(By.cssSelector("td:nth-child(3)")).getText();
 
-            if("Credit".equals(type)){
+            if ("Credit".equals(type)) {
                 totalCredit += amount;
             } else if ("Debit".equals(type)) {
-                totalDebit  += amount;
+                totalDebit += amount;
             }
         }
-        return totalCredit-totalDebit;
+        return totalCredit - totalDebit;
+    }
+
+    /**
+     * Метод для подсчета количества транзакций вкладки Transactions интерфейса Customer Login
+     *
+     * @return количество транзакций
+     */
+    public int calculateCountTransactionsCustomerLoginInterface() {
+        if (tableTransactionsСustomerLoginInterface.findElements(By.cssSelector("tr")).isEmpty()) {
+            return 0;
+        }
+        List<WebElement> rows = tableTransactionsСustomerLoginInterface.findElements(By.cssSelector("tr"));
+        return rows.size();
+    }
+
+    /**
+     * Метод для клика по кнопке Reset вкладки Transactions интерфейса Customer Login
+     *
+     * @return текущая страница
+     */
+    @Step("Клик по кнопке Reset вкладки Transactions интерфейса Customer Login")
+    public BankingPage clickButtonResetTransactionsCustomerLoginInterface() {
+        waitUntilVisible(driver, buttonResetTransactionsCustomerLoginInterface);
+        buttonResetTransactionsCustomerLoginInterface.click();
+        return this;
     }
 }

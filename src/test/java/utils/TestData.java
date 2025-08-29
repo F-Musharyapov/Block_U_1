@@ -116,6 +116,16 @@ public class TestData {
     public static final String WITHDRAWN_AMOUNT_FAILED = "1000000";
 
     /**
+     * Константа счета пользователя с 0 на балансе интерфейса Customer Login теста BankingTest
+     */
+    public static final String BALANCE_EMPTY = "0";
+
+    /**
+     * Константа нуля транзакций пользователя интерфейса Customer Login теста BankingTest
+     */
+    public static final int TRANSACTIONS_EMPTY = 0;
+
+    /**
      * Идентификаторы
      */
     public static final String EMAIL_USER = "[a-z]{10}\\@[a-z]{5}\\.[a-z]{2}";
