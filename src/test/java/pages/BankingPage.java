@@ -145,6 +145,12 @@ public class BankingPage extends BasePage {
     private WebElement tabOpenAccountBankManagerInterface;
 
     /**
+     * Локатор для таба Customers интерфейса Bank Manager
+     */
+    @FindBy(css = "button.btn.tab[ng-click='showCust()']")
+    private WebElement tabCustomersBankManagerInterface;
+
+    /**
      * Локатор для селекта выбора userSelect таба Open Account интерфейса Bank Manager
      */
     @FindBy(css = "select.form-control[name='userSelect']")
@@ -161,6 +167,12 @@ public class BankingPage extends BasePage {
      */
     @FindBy(xpath = "//button[@type='submit' and text()='Process']")
     private WebElement buttonProcessBankManagerInterface;
+
+    /**
+     * Локатор для поля Search Customer вкладки Customer для интерфейса Bank Manager
+     */
+    @FindBy(css = "input.form-control[ng-model='searchCustomer']")
+    private WebElement fieldSearchCustomerBankManagerInterface;
 
     /**
      * Локатор для кнопки Customer Login
@@ -281,6 +293,12 @@ public class BankingPage extends BasePage {
      */
     @FindBy(css = "button[ng-click='reset()'].btn")
     private WebElement buttonResetTransactionsCustomerLoginInterface;
+
+    /**
+     * Локатор для кнопки Delete вкладки Customer интерфейса Customer Login
+     */
+    @FindBy(css = "td button[ng-click='deleteCust(cust)']")
+    private WebElement deleteCustomerButtonСustomerLoginInterface;
 
     /**
      * Метод для клика по кнопке SampleForm
@@ -728,6 +746,7 @@ public class BankingPage extends BasePage {
             }
         }
         return false;
+
     }
 
     /**
@@ -784,6 +803,7 @@ public class BankingPage extends BasePage {
      *
      * @return подсчитанный баланс пользователя
      */
+    @Step("Извлечение транзакций из строк таблицы вкладки Transactions интерфейса Customer Login")
     public int calculateBalanceTransactionsCustomerLoginInterface() {
         waitUntilVisible(driver, tableTransactionsСustomerLoginInterface);
         List<WebElement> rows = tableTransactionsСustomerLoginInterface.findElements(By.cssSelector("tr"));
@@ -811,6 +831,7 @@ public class BankingPage extends BasePage {
      *
      * @return количество транзакций
      */
+    @Step("Подсчет количества транзакций вкладки Transactions интерфейса Customer Login")
     public int calculateCountTransactionsCustomerLoginInterface() {
         if (tableTransactionsСustomerLoginInterface.findElements(By.cssSelector("tr")).isEmpty()) {
             return 0;
@@ -828,6 +849,79 @@ public class BankingPage extends BasePage {
     public BankingPage clickButtonResetTransactionsCustomerLoginInterface() {
         waitUntilVisible(driver, buttonResetTransactionsCustomerLoginInterface);
         buttonResetTransactionsCustomerLoginInterface.click();
+        return this;
+    }
+
+    /**
+     * Метод для клика по табу Customers интерфейса Bank Manager
+     *
+     * @return текущая страница
+     */
+    @Step("Клик по табу Customers интерфейса Bank Manager")
+    public BankingPage clickTabCustomersBankManagerInterface() {
+        waitUntilVisible(driver, tabCustomersBankManagerInterface);
+        tabCustomersBankManagerInterface.click();
+        return this;
+    }
+
+    /**
+     * Метод ввода текста в поле Search Customer вкладки Customer интерфейса Bank Manager
+     *
+     * @param input текст ввода
+     * @return текущая страница
+     */
+    @Step("Ввод данных в поле ввода Search Customer вкладки Customer интерфейса Bank Manager")
+    public BankingPage inputSearchCustomerBankManagerInterface(String input) {
+        waitUntilVisible(driver, fieldSearchCustomerBankManagerInterface);
+        fieldSearchCustomerBankManagerInterface.sendKeys(input);
+        return this;
+    }
+
+    /**
+     * Метод для поиска пользователя в таблице вкладки Customer интерфейса Bank Manager
+     *
+     * @return результат поиска
+     */
+    @Step("Поиск пользователя в таблице вкладки Customer интерфейса Bank Manager")
+    public boolean searchCustomerInListBankManagerInterface(String searchText) {
+        List<WebElement> rows = tableTransactionsСustomerLoginInterface.findElements(By.cssSelector("tr"));
+
+        for (WebElement row : rows) {
+            String rowText = row.getText();
+            if (rowText.contains(searchText)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Метод удаления по имени в таблице вкладки Customer интерфейса Bank Manager
+     *
+     * @param name имя пользователя
+     */
+    @Step("Удаления по имени в таблице вкладки Customer интерфейса Bank Manager")
+    public BankingPage deleteCustomersByNamesСustomerLoginInterface(String name) {
+        List<WebElement> rows = tableTransactionsСustomerLoginInterface.findElements(By.cssSelector("tr"));
+
+        for (WebElement row : rows) {
+            String customerName = row.findElement(By.cssSelector("td:nth-child(1)")).getText();
+            if (name.contains(customerName)) {
+                deleteCustomerButtonСustomerLoginInterface.click();
+            }
+        }
+        return this;
+    }
+
+    /**
+     * Метод очистки поля поиска вкладки Customer интерфейса Bank Manager
+     *
+     * @return текущая страница
+     */
+    @Step("Очистка поля поиска вкладки Customer интерфейса Bank Manager")
+    public BankingPage cleanFieldSearchCustomerBankManagerInterface() {
+        waitUntilVisible(driver, fieldSearchCustomerBankManagerInterface);
+        fieldSearchCustomerBankManagerInterface.clear();
         return this;
     }
 }
