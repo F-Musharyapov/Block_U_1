@@ -60,11 +60,6 @@ public class BankingTest {
     private int sumWithdrawnCustomerLoginInterface;
 
     /**
-     * Переменная для количества транзакций
-     */
-    private int сountTransactionsCustomerLoginInterface;
-
-    /**
      * Метод предусловие для инициализации
      */
     @BeforeClass
@@ -296,6 +291,29 @@ public class BankingTest {
 
         assertEquals(bankingPage.getStringBalanceCustomerLoginInterface().getText(), BALANCE_EMPTY,
                 "Баланс не совпадает");
+    }
+
+    @Epic(value = "Тестирование сайта way2automation.com")
+    @Feature(value = "Интерфейсы")
+    @Story(value = "Тестирование вкладки Bank Manager Login")
+    @Test(description = "5.4 - Удаление покупателя", priority = 12, dependsOnMethods = "testCleanHistoryTransactionsCustomerLoginInterface", retryAnalyzer = RetryAnalyzer.class)
+    @Severity(value = SeverityLevel.NORMAL)
+    public void testDeleteCustomerBankManagerInterface() {
+        driver.get(config.bankingUrl());
+        bankingPage
+                .clickButtonBankManagerLogin()
+                .clickTabCustomersBankManagerInterface()
+                .inputSearchCustomerBankManagerInterface(firstNameCustomerBankManagerInterface);
+
+        assertTrue(bankingPage.searchCustomerInListBankManagerInterface(firstNameCustomerBankManagerInterface + " " + lastNameCustomerBankManagerInterface),
+                "Таблица не содержит пользователя " + firstNameCustomerBankManagerInterface + " " + lastNameCustomerBankManagerInterface);
+
+        bankingPage
+                .deleteCustomersByNamesСustomerLoginInterface(firstNameCustomerBankManagerInterface)
+                .cleanFieldSearchCustomerBankManagerInterface();
+
+        assertFalse(bankingPage.searchCustomerInListBankManagerInterface(firstNameCustomerBankManagerInterface + " " + lastNameCustomerBankManagerInterface),
+                "Таблица не должна содержать " + firstNameCustomerBankManagerInterface + " " + lastNameCustomerBankManagerInterface);
     }
 
     /**
