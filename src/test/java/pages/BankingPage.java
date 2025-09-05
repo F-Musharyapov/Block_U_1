@@ -884,32 +884,26 @@ public class BankingPage extends BasePage {
      */
     @Step("Поиск пользователя в таблице вкладки Customer интерфейса Bank Manager")
     public boolean searchCustomerInListBankManagerInterface(String searchText) {
-        List<WebElement> rows = tableTransactionsСustomerLoginInterface.findElements(By.cssSelector("tr"));
-
-        for (WebElement row : rows) {
-            String rowText = row.getText();
-            if (rowText.contains(searchText)) {
-                return true;
-            }
-        }
-        return false;
+        return tableTransactionsСustomerLoginInterface.findElements(By.cssSelector("tr"))
+                .stream()
+                .map(WebElement::getText)
+                .anyMatch(rowtext -> rowtext.contains(searchText));
     }
 
     /**
      * Метод удаления по имени в таблице вкладки Customer интерфейса Bank Manager
      *
-     * @param name имя пользователя
+     * @param deleteName имя пользователя
      */
     @Step("Удаления по имени в таблице вкладки Customer интерфейса Bank Manager")
-    public BankingPage deleteCustomersByNamesСustomerLoginInterface(String name) {
-        List<WebElement> rows = tableTransactionsСustomerLoginInterface.findElements(By.cssSelector("tr"));
-
-        for (WebElement row : rows) {
-            String customerName = row.findElement(By.cssSelector("td:nth-child(1)")).getText();
-            if (name.contains(customerName)) {
-                deleteCustomerButtonСustomerLoginInterface.click();
-            }
-        }
+    public BankingPage deleteCustomersByNamesСustomerLoginInterface(String deleteName) {
+        tableTransactionsСustomerLoginInterface.findElements(By.cssSelector("tr"))
+                .stream()
+                .filter(row -> {
+                    String customerName = row.findElement(By.cssSelector("td:nth-child(1)")).getText();
+                    return deleteName.contains(customerName);
+                })
+                .forEach(row -> deleteCustomerButtonСustomerLoginInterface.click());
         return this;
     }
 
